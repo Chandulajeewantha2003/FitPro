@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#181717</color>
+    <color name="secondaryColor">#FFFFFFFF</color>
+    <color name="AccentColor">#CEFB3E</color>
+    <color name="AccentColor1">#FF805E</color>
+
+
+    <!-- Background gradients -->
+    <color name="bg_light_green">#B0C929</color>
+    <color name="bg_white">#F3F3F3</color>
+
+
+
+</resources>
