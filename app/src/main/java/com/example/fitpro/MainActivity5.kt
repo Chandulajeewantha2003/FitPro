@@ -35,7 +35,7 @@ class MainActivity5 : AppCompatActivity() {
             val unit = if (radioKg.isChecked) "kg" else "lbs"
 
             // Send data to MainActivity6 (or show toast if you prefer)
-            //val intent = Intent(this, MainActivity6::class.java)
+            val intent = Intent(this, MainActivity6::class.java)
             intent.putExtra("USER_WEIGHT", "$weight $unit")
             startActivity(intent)
         }
