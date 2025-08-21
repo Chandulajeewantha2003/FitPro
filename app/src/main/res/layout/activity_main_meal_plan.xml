@@ -27,8 +27,6 @@
             android:padding="16dp"
             android:paddingBottom="100dp">
 
-            <!-- Section Title -->
-
             <!-- Meal Type Tabs -->
             <TextView
                 android:layout_width="match_parent"
