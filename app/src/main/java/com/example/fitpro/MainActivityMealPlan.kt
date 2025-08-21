@@ -8,40 +8,39 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainHome : AppCompatActivity() {
+class MainActivityMealPlan : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main_home)
+        setContentView(R.layout.activity_main_meal_plan)
 
-        // Handle edge-to-edge insets
+        // Handle system bar insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Bottom navigation logic
+        // ✅ Bottom navigation logic (moved outside insets block)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigationView.selectedItemId = R.id.nav_home // Mark "Home" as selected
+        bottomNavigationView.selectedItemId = R.id.nav_meal // Highlight "Meal"
 
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
-                    // Already on MainHome, do nothing
-                    true
-                }
-
-                R.id.nav_meal -> {
-                    val intent = Intent(this, MainActivityMealPlan::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(this, MainHome::class.java))
                     overridePendingTransition(0, 0)
                     finish()
                     true
                 }
 
+                R.id.nav_meal -> {
+                    // Already on Meal screen
+                    true
+                }
+
                 R.id.nav_exercise -> {
-                 //   val intent = Intent(this, ExerciseActivity::class.java)
+                  //  val intent = Intent(this, ExerciseActivity::class.java)
                     startActivity(intent)
                     overridePendingTransition(0, 0)
                     finish()
@@ -49,7 +48,7 @@ class MainHome : AppCompatActivity() {
                 }
 
                 R.id.nav_profile -> {
-                    //val intent = Intent(this, ProfileActivity::class.java)
+                  //  val intent = Intent(this, ProfileActivity::class.java)
                     startActivity(intent)
                     overridePendingTransition(0, 0)
                     finish()

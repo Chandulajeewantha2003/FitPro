@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".MainHome">
 
     <!-- Scrollable content -->
@@ -12,7 +14,6 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottom_navigation"
         android:fillViewport="true"
         android:visibility="visible">
 
@@ -20,10 +21,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="16dp"
+            android:paddingBottom="100dp"> <!-- Prevent overlap with bottom nav -->
 
-            <!-- Place all your content here -->
-            <!-- Example: Welcome Text -->
+            <!-- Welcome Text -->
             <TextView
                 android:id="@+id/welcomeText"
                 android:layout_width="wrap_content"
@@ -41,14 +42,13 @@
                 android:text="POPULAR EXERCISE"
                 android:textSize="25dp" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="16dp" />
+            <Space android:layout_width="match_parent" android:layout_height="16dp" />
 
             <ImageView
                 android:id="@+id/imageView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 app:srcCompat="@drawable/group_56530" />
 
             <TextView
@@ -64,14 +64,13 @@
                 android:layout_height="wrap_content"
                 android:text="Beginner" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="21dp" />
+            <Space android:layout_width="match_parent" android:layout_height="21dp" />
 
             <ImageView
                 android:id="@+id/imageView15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 app:srcCompat="@drawable/group_56531" />
 
             <TextView
@@ -87,26 +86,23 @@
                 android:layout_height="wrap_content"
                 android:text="Beginner" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="18dp" />
+            <Space android:layout_width="match_parent" android:layout_height="18dp" />
 
             <TextView
                 android:id="@+id/textView27"
-                android:layout_width="219dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bebas_neue"
                 android:text="MEAL PLAN"
                 android:textSize="25sp" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="13dp" />
+            <Space android:layout_width="match_parent" android:layout_height="13dp" />
 
             <ImageView
                 android:id="@+id/imageView16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 app:srcCompat="@drawable/img" />
 
             <TextView
@@ -122,14 +118,13 @@
                 android:layout_height="wrap_content"
                 android:text="150 kcal" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="27dp" />
+            <Space android:layout_width="match_parent" android:layout_height="27dp" />
 
             <ImageView
                 android:id="@+id/imageView17"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 app:srcCompat="@drawable/img__1_" />
 
             <TextView
@@ -145,9 +140,7 @@
                 android:layout_height="wrap_content"
                 android:text="270 kcal" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="18dp" />
+            <Space android:layout_width="match_parent" android:layout_height="18dp" />
 
             <TextView
                 android:id="@+id/textView36"
@@ -157,43 +150,37 @@
                 android:text="Additional Exercise"
                 android:textSize="25dp" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="27dp" />
+            <Space android:layout_width="match_parent" android:layout_height="27dp" />
 
             <ImageView
                 android:id="@+id/imageView18"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:adjustViewBounds="true"
                 app:srcCompat="@drawable/images_removebg_preview_1__2_" />
 
             <TextView
                 android:id="@+id/textView37"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Exercises with Jumping  Rope" />
+                android:text="Exercises with Jumping Rope" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="23dp" />
+            <Space android:layout_width="match_parent" android:layout_height="23dp" />
 
             <ImageView
                 android:id="@+id/imageView19"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:adjustViewBounds="true"
                 app:srcCompat="@drawable/_9694286_xs_removebg_preview_1" />
 
             <TextView
                 android:id="@+id/textView38"
                 android:layout_width="match_parent"
-                android:layout_height="82dp"
-                android:text="Exercises with Holding Jumping  Rope " />
+                android:layout_height="wrap_content"
+                android:text="Exercises with Holding Jumping Rope" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="28dp" />
-
-            <!-- Add more views here like image, cards, etc. -->
+            <Space android:layout_width="match_parent" android:layout_height="28dp" />
 
         </LinearLayout>
     </ScrollView>
