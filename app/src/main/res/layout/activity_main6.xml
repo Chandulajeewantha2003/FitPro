@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".MainActivity5">
+    tools:context=".MainActivity6">
 
     <!-- Step text -->
     <TextView
         android:id="@+id/stepText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Step 3 of 7"
+        android:text="Step 4 of 7"
         android:textSize="14sp"
         android:textColor="@android:color/black"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,20 +23,19 @@
 
     <!-- Title -->
 
-    <!-- LBS / KG Toggle -->
-
+    <!-- CM / FT Toggle -->
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/bebas_neue"
-        android:text="HOW MUCH DO YOU WEIGHT?"
+        android:text="HOW TALL ARE YOU?"
         android:textColor="@android:color/black"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintHorizontal_bias="0.093"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stepText" />
 
@@ -51,44 +50,45 @@
         android:layout_marginTop="30dp">
 
         <RadioButton
-            android:id="@+id/radioLbs"
+            android:id="@+id/radioCm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LBS"
-            android:buttonTint="@android:color/darker_gray"
-            android:checked="false"/>
-
-        <RadioButton
-            android:id="@+id/radioKg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="KG"
+            android:text="CM"
             android:buttonTint="@android:color/darker_gray"
             android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/radioFt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FT"
+            android:buttonTint="@android:color/darker_gray"/>
     </RadioGroup>
 
-    <!-- Weight Input -->
+    <!-- Height Input -->
 
     <!-- Next Button -->
-
     <EditText
-        android:id="@+id/weightInput"
-        android:layout_width="110dp"
-        android:layout_height="106dp"
+        android:id="@+id/heightInput"
+        android:layout_width="202dp"
+        android:layout_height="141dp"
         android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="20dp"
         android:background="@android:color/transparent"
         android:gravity="center"
-        android:hint="Enter your weight"
+        android:hint="Enter your height"
         android:inputType="number"
-        android:text="87"
+        android:text="170"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/unitToggle"
+        app:layout_constraintVertical_bias="0.276" />
 
     <Button
-        android:id="@+id/nextBtnWeight"
+        android:id="@+id/nextBtnHeight"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"

@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MainActivity5 : AppCompatActivity() {
+class MainActivity6 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main5)
+        setContentView(R.layout.activity_main6)
 
         // Handle system bar padding
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -24,19 +24,19 @@ class MainActivity5 : AppCompatActivity() {
         }
 
         // Find views
-        val weightInput: EditText = findViewById(R.id.weightInput)
-        val radioKg: RadioButton = findViewById(R.id.radioKg)
-        val radioLbs: RadioButton = findViewById(R.id.radioLbs)
-        val nextBtn: Button = findViewById(R.id.nextBtnWeight)
+        val heightInput: EditText = findViewById(R.id.heightInput)
+        val radioCm: RadioButton = findViewById(R.id.radioCm)
+        val radioFt: RadioButton = findViewById(R.id.radioFt)
+        val nextBtn: Button = findViewById(R.id.nextBtnHeight)
 
         // Next button action
         nextBtn.setOnClickListener {
-            val weight = weightInput.text.toString().ifEmpty { "0" }
-            val unit = if (radioKg.isChecked) "kg" else "lbs"
+            val height = heightInput.text.toString().ifEmpty { "0" }
+            val unit = if (radioCm.isChecked) "cm" else "ft"
 
-            // Send data to MainActivity6 (or show toast if you prefer)
-            //val intent = Intent(this, MainActivity6::class.java)
-            intent.putExtra("USER_WEIGHT", "$weight $unit")
+            // Example: send data to MainActivity7
+            //val intent = Intent(this, MainActivity7::class.java)
+            intent.putExtra("USER_HEIGHT", "$height $unit")
             startActivity(intent)
         }
     }
