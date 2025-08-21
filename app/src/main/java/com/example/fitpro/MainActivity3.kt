@@ -45,7 +45,7 @@ class MainActivity3 : AppCompatActivity() {
                 android.widget.Toast.makeText(this, "Please select at least one option", android.widget.Toast.LENGTH_SHORT).show()
             } else {
                 // Go to MainActivity4
-             //   val intent = Intent(this, MainActivity4::class.java)
+                val intent = Intent(this, MainActivity4::class.java)
                 startActivity(intent)
             }
         }

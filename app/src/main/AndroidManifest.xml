@@ -11,9 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitPro">
-        <activity
-            android:name=".MainActivity4"
-            android:exported="false" />
+
         <!-- Splash / Logo Screen -->
         <activity
             android:name=".MainActivity"
@@ -32,6 +30,10 @@
             android:exported="false" /> <!-- Post-login / Dashboard Screen -->
         <activity
             android:name=".MainActivity3"
+            android:exported="false" />
+
+        <activity
+            android:name=".MainActivity4"
             android:exported="false" />
 
         <meta-data
