@@ -35,7 +35,7 @@ class MainActivity6 : AppCompatActivity() {
             val unit = if (radioCm.isChecked) "cm" else "ft"
 
             // Example: send data to MainActivity7
-            //val intent = Intent(this, MainActivity7::class.java)
+            val intent = Intent(this, MainActivity7::class.java)
             intent.putExtra("USER_HEIGHT", "$height $unit")
             startActivity(intent)
         }

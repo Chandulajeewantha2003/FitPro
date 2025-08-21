@@ -12,9 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitPro">
         <activity
-            android:name=".MainActivity6"
+            android:name=".MainActivity7"
             android:exported="false" />
-        <!-- Splash / Logo Screen -->
+        <activity
+            android:name=".MainActivity6"
+            android:exported="false" /> <!-- Splash / Logo Screen -->
         <activity
             android:name=".MainActivity"
             android:exported="true">

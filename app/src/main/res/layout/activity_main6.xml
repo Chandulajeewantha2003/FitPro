@@ -94,6 +94,7 @@
         android:layout_margin="20dp"
         android:backgroundTint="#A7CF34"
         android:text="NEXT STEPS"
+        app:cornerRadius="7dp"
         android:textColor="@android:color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
