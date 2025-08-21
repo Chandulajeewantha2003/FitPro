@@ -8,11 +8,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivityMealPlan : AppCompatActivity() {
+class MainActivityExercise : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main_meal_plan)
+        setContentView(R.layout.activity_main_exercise)
 
         // Handle system bar insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -21,35 +21,37 @@ class MainActivityMealPlan : AppCompatActivity() {
             insets
         }
 
-        // ✅ Bottom navigation logic (moved outside insets block)
+        // Bottom navigation logic
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigationView.selectedItemId = R.id.nav_meal // Highlight "Meal"
+        bottomNavigationView.selectedItemId = R.id.nav_exercise // Mark "Exercise" as selected
 
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
-                    startActivity(Intent(this, MainHome::class.java))
+                    val intent = Intent(this, MainHome::class.java)
+                    startActivity(intent)
                     overridePendingTransition(0, 0)
                     finish()
                     true
                 }
 
                 R.id.nav_meal -> {
-                    // Already on Meal screen
-                    true
-                }
-
-                R.id.nav_exercise -> {
-                    val intent = Intent(this, MainActivityExercise::class.java)
+                    val intent = Intent(this, MainActivityMealPlan::class.java)
                     startActivity(intent)
                     overridePendingTransition(0, 0)
                     finish()
                     true
                 }
 
+                R.id.nav_exercise -> {
+                    // Already on MainActivityExercise, do nothing
+                    true
+                }
+
                 R.id.nav_profile -> {
-                  //  val intent = Intent(this, ProfileActivity::class.java)
-                    startActivity(intent)
+                    // Uncomment when you create ProfileActivity
+                    // val intent = Intent(this, ProfileActivity::class.java)
+                    // startActivity(intent)
                     overridePendingTransition(0, 0)
                     finish()
                     true

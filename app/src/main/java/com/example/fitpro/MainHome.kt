@@ -41,7 +41,7 @@ class MainHome : AppCompatActivity() {
                 }
 
                 R.id.nav_exercise -> {
-                 //   val intent = Intent(this, ExerciseActivity::class.java)
+                    val intent = Intent(this, MainActivityExercise::class.java)
                     startActivity(intent)
                     overridePendingTransition(0, 0)
                     finish()

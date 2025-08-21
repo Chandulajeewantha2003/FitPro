@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitPro">
         <activity
+            android:name=".MainActivityExercise"
+            android:exported="false" />
+        <activity
             android:name=".MainActivityMealPlan"
             android:exported="false" />
         <activity
