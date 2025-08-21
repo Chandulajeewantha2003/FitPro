@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitPro">
         <activity
+            android:name=".MainHome"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity7"
             android:exported="false" />
         <activity
