@@ -1,9 +1,9 @@
 package com.example.fitpro
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.NumberPicker
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,27 +15,30 @@ class MainActivity4 : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main4)
 
-        // Handle window insets (status/navigation bar padding)
+        // Handle system bars padding
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Find views
         val agePicker: NumberPicker = findViewById(R.id.agePicker)
         val nextBtn: Button = findViewById(R.id.nextBtn)
 
-        // Configure NumberPicker
+        // Setup NumberPicker
         agePicker.minValue = 18
         agePicker.maxValue = 100
-        agePicker.value = 27   // default value
+        agePicker.value = 27
         agePicker.wrapSelectorWheel = false
 
-        // Handle button click
+        // On NEXT button click → open MainActivity5
         nextBtn.setOnClickListener {
             val selectedAge = agePicker.value
-            Toast.makeText(this, "Selected Age: $selectedAge", Toast.LENGTH_SHORT).show()
+
+            // Send selected age to next activity (optional)
+            val intent = Intent(this, MainActivity5::class.java)
+            intent.putExtra("USER_AGE", selectedAge)
+            startActivity(intent)
         }
     }
 }
