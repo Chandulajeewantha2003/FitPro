@@ -16,6 +16,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
             finish() // close splash so back button won't return here
-        }, 3000) // 3000ms = 3 seconds
+        }, 5000) // 5000ms = 5 seconds
     }
 }
