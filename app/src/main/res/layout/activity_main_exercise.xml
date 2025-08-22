@@ -109,9 +109,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Jumping Rope"
-                            android:textStyle="bold"
-                            android:textSize="16sp"/>
+                            android:text="Exercises with Jumping  Rope"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -160,9 +160,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Jumping Rope"
-                            android:textStyle="bold"
-                            android:textSize="16sp"/>
+                            android:text="Exercises with Sitting  Dumbbells"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -211,9 +211,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Jumping Rope"
-                            android:textStyle="bold"
-                            android:textSize="16sp"/>
+                            android:text="Exercises with Holding Jumping  Rope "
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -250,7 +250,7 @@
                         android:layout_width="100dp"
                         android:layout_height="80dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/images_removebg_preview_1__2_"
+                        android:src="@drawable/image_6__1_"
                         android:contentDescription="Jumping Rope Exercise" />
 
                     <LinearLayout
@@ -262,9 +262,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Jumping Rope"
-                            android:textStyle="bold"
-                            android:textSize="16sp"/>
+                            android:text="Exercises with Sitting  Dumbbells"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -301,7 +301,7 @@
                         android:layout_width="100dp"
                         android:layout_height="80dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/images_removebg_preview_1__2_"
+                        android:src="@drawable/images_removebg_preview__1__1"
                         android:contentDescription="Plank Exercise" />
 
                     <LinearLayout
@@ -313,9 +313,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Plank Exercise"
-                            android:textStyle="bold"
-                            android:textSize="16sp"/>
+                            android:text="Exercises with Sitting  Dumbbells"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
