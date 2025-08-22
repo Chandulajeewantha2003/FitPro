@@ -28,10 +28,9 @@
                 android:layout_height="29dp" />
 
             <ImageView
-                android:id="@+id/imageView24"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:contentDescription="Profile"
+                android:id="@+id/imageView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:srcCompat="@drawable/profile_edit" />
 
             <Space
@@ -39,6 +38,7 @@
                 android:layout_height="29dp" />
 
             <!-- Full Name -->
+
             <EditText
                 android:id="@+id/edit_full_name"
                 android:layout_width="match_parent"
