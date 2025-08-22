@@ -50,7 +50,7 @@
         android:id="@+id/textView20"
         android:layout_width="253dp"
         android:layout_height="90dp"
-        android:fontFamily="@font/dm_sans"
+        android:fontFamily="sans-serif-condensed-medium"
         android:text="Sculpt your ideal body, free your true self, transform your life."
         android:textAlignment="center"
         android:textColor="@color/AccentColor1"
