@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/AccentColor1"
+    android:orientation="vertical"
     tools:context=".MainActivityExercise">
 
     <!-- 🔹 Top App Bar -->
@@ -14,11 +14,11 @@
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
         android:text="FULL EXERCISE"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:padding="16dp" />
+        android:textStyle="bold" />
 
     <!-- 🔹 Category Tabs -->
     <HorizontalScrollView
@@ -34,35 +34,39 @@
             android:padding="8dp">
 
             <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cardio"
+                android:backgroundTint="@color/bg_light_green"
                 android:contentDescription="Cardio exercises"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                android:text="Cardio" />
 
             <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Legs"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="@color/AccentColor1"
                 android:contentDescription="Leg exercises"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_marginStart="8dp"/>
+                android:text="Legs" />
 
             <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Back"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="@color/AccentColor1"
                 android:contentDescription="Back exercises"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_marginStart="8dp"/>
+                android:text="Back" />
 
             <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chest"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="@color/AccentColor1"
                 android:contentDescription="Chest exercises"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_marginStart="8dp"/>
+                android:text="Chest" />
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -96,15 +100,15 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="80dp"
+                        android:contentDescription="Jumping Rope Exercise"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/images_removebg_preview_1__2_"
-                        android:contentDescription="Jumping Rope Exercise" />
+                        android:src="@drawable/images_removebg_preview_1__2_" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="12dp">
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -116,16 +120,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
                             android:text="110 kcal  |  10 min"
-                            android:textSize="14sp"
-                            android:layout_marginTop="4dp"/>
+                            android:textSize="14sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Beginner"
-                            android:textSize="14sp"
-                            android:textColor="@android:color/darker_gray"/>
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -147,15 +151,15 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="80dp"
+                        android:contentDescription="Jumping Rope Exercise"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/image_6"
-                        android:contentDescription="Jumping Rope Exercise" />
+                        android:src="@drawable/image_6" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="12dp">
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -167,16 +171,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
                             android:text="110 kcal  |  10 min"
-                            android:textSize="14sp"
-                            android:layout_marginTop="4dp"/>
+                            android:textSize="14sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Beginner"
-                            android:textSize="14sp"
-                            android:textColor="@android:color/darker_gray"/>
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -198,15 +202,15 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="80dp"
+                        android:contentDescription="Jumping Rope Exercise"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/_9694286_xs_removebg_preview_1"
-                        android:contentDescription="Jumping Rope Exercise" />
+                        android:src="@drawable/_9694286_xs_removebg_preview_1" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="12dp">
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -218,16 +222,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
                             android:text="110 kcal  |  10 min"
-                            android:textSize="14sp"
-                            android:layout_marginTop="4dp"/>
+                            android:textSize="14sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Beginner"
-                            android:textSize="14sp"
-                            android:textColor="@android:color/darker_gray"/>
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -249,15 +253,15 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="80dp"
+                        android:contentDescription="Jumping Rope Exercise"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/image_6__1_"
-                        android:contentDescription="Jumping Rope Exercise" />
+                        android:src="@drawable/image_6__1_" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="12dp">
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -269,16 +273,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
                             android:text="110 kcal  |  10 min"
-                            android:textSize="14sp"
-                            android:layout_marginTop="4dp"/>
+                            android:textSize="14sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Beginner"
-                            android:textSize="14sp"
-                            android:textColor="@android:color/darker_gray"/>
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -300,15 +304,15 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="80dp"
+                        android:contentDescription="Plank Exercise"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/images_removebg_preview__1__1"
-                        android:contentDescription="Plank Exercise" />
+                        android:src="@drawable/images_removebg_preview__1__1" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="12dp">
+                        android:layout_marginStart="12dp"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -320,16 +324,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
                             android:text="50 kcal  |  5 min"
-                            android:textSize="14sp"
-                            android:layout_marginTop="4dp"/>
+                            android:textSize="14sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Intermediate"
-                            android:textSize="14sp"
-                            android:textColor="@android:color/darker_gray"/>
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

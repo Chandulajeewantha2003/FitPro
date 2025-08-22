@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="#F1FFE7"
     tools:context=".MainActivity6">
 
     <!-- Step text -->
@@ -13,13 +13,13 @@
         android:id="@+id/stepText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Step 4 of 4"
-        android:textSize="14sp"
-        android:textColor="@android:color/black"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:text="Step 4 of 4"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Title -->
 
@@ -43,26 +43,26 @@
         android:id="@+id/unitToggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/titleText"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="30dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleText">
 
         <RadioButton
             android:id="@+id/radioCm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CM"
             android:buttonTint="@android:color/darker_gray"
-            android:checked="true"/>
+            android:checked="true"
+            android:text="CM" />
 
         <RadioButton
             android:id="@+id/radioFt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FT"
-            android:buttonTint="@android:color/darker_gray"/>
+            android:buttonTint="@android:color/darker_gray"
+            android:text="FT" />
     </RadioGroup>
 
     <!-- Height Input -->
@@ -94,10 +94,10 @@
         android:layout_margin="20dp"
         android:backgroundTint="#A7CF34"
         android:text="NEXT STEPS"
-        app:cornerRadius="7dp"
         android:textColor="@android:color/white"
         android:textStyle="bold"
+        app:cornerRadius="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

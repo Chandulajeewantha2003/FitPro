@@ -83,12 +83,14 @@
                     android:id="@+id/btn_lbs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/bg_light_green"
                     android:text="LBS" />
 
                 <Button
                     android:id="@+id/btn_kg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/bg_light_green"
                     android:text="KG" />
             </LinearLayout>
 
@@ -111,12 +113,14 @@
                     android:id="@+id/btn_feet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/bg_light_green"
                     android:text="FEET" />
 
                 <Button
                     android:id="@+id/btn_cm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/bg_light_green"
                     android:text="CM" />
             </LinearLayout>
 
@@ -138,7 +142,7 @@
 
                 <RadioButton
                     android:id="@+id/radio_male"
-                    android:layout_width="wrap_content"
+                    android:layout_width="184dp"
                     android:layout_height="wrap_content"
                     android:text="Male" />
 
@@ -155,6 +159,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:backgroundTint="@color/bg_light_green"
                 android:text="SAVE" />
         </LinearLayout>
     </ScrollView>
