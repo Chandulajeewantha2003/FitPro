@@ -8,11 +8,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainHome : AppCompatActivity() {
+class MainActivityProfile : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main_home)
+        setContentView(R.layout.activity_main_profile)
 
         // Handle edge-to-edge insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -23,12 +23,15 @@ class MainHome : AppCompatActivity() {
 
         // Bottom navigation logic
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigationView.selectedItemId = R.id.nav_home // Mark "Home" as selected
+        bottomNavigationView.selectedItemId = R.id.nav_profile // Mark "Profile" as selected
 
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
-                    // Already on MainHome, do nothing
+                    val intent = Intent(this, MainHome::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
+                    finish()
                     true
                 }
 
@@ -49,10 +52,7 @@ class MainHome : AppCompatActivity() {
                 }
 
                 R.id.nav_profile -> {
-                    val intent = Intent(this, MainActivityProfile::class.java)
-                    startActivity(intent)
-                    overridePendingTransition(0, 0)
-                    finish()
+                    // Already on Profile, do nothing
                     true
                 }
 

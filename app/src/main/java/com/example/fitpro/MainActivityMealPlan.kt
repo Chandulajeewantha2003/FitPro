@@ -48,7 +48,7 @@ class MainActivityMealPlan : AppCompatActivity() {
                 }
 
                 R.id.nav_profile -> {
-                  //  val intent = Intent(this, ProfileActivity::class.java)
+                   val intent = Intent(this, MainActivityProfile::class.java)
                     startActivity(intent)
                     overridePendingTransition(0, 0)
                     finish()

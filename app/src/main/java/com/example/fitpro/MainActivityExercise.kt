@@ -44,14 +44,13 @@ class MainActivityExercise : AppCompatActivity() {
                 }
 
                 R.id.nav_exercise -> {
-                    // Already on MainActivityExercise, do nothing
+                    // Already on Exercise, do nothing
                     true
                 }
 
                 R.id.nav_profile -> {
-                    // Uncomment when you create ProfileActivity
-                    // val intent = Intent(this, ProfileActivity::class.java)
-                    // startActivity(intent)
+                    val intent = Intent(this, MainActivityProfile::class.java)
+                    startActivity(intent)
                     overridePendingTransition(0, 0)
                     finish()
                     true
