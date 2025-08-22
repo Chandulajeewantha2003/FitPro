@@ -114,12 +114,22 @@
                 android:text="POPULAR EXERCISE"
                 android:textSize="25sp"/>
 
-            <ImageView
-                android:id="@+id/imageView14"
+            <!-- Card 1 -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                app:srcCompat="@drawable/group_56530"/>
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/group_56530"/>
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/textView25"
@@ -134,13 +144,22 @@
                 android:layout_height="wrap_content"
                 android:text="Beginner"/>
 
-            <ImageView
-                android:id="@+id/imageView15"
+            <!-- Card 2 -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                app:srcCompat="@drawable/group_56531"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <ImageView
+                    android:id="@+id/imageView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/group_56531"/>
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/textView26"
@@ -165,12 +184,22 @@
                 android:text="MEAL PLAN"
                 android:textSize="25sp"/>
 
-            <ImageView
-                android:id="@+id/imageView16"
+            <!-- Card 3 -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                app:srcCompat="@drawable/img"/>
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <ImageView
+                    android:id="@+id/imageView16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/img"/>
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/textView29"
@@ -185,13 +214,22 @@
                 android:layout_height="wrap_content"
                 android:text="150 kcal"/>
 
-            <ImageView
-                android:id="@+id/imageView17"
+            <!-- Card 4 -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                app:srcCompat="@drawable/img__1_"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <ImageView
+                    android:id="@+id/imageView17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/img__1_"/>
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/textView31"
