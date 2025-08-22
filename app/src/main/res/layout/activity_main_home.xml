@@ -14,271 +14,249 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:visibility="visible">
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp"
-            android:paddingBottom="100dp"> <!-- Prevent overlap with bottom nav -->
+            android:paddingBottom="100dp">
 
-            <!-- Welcome Text -->
-
+            <!-- Welcome Text + Search -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
                 <TextView
                     android:id="@+id/welcomeText"
-                    android:layout_width="331dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="16dp"
-                    android:text="Hello, Good Morning "
+                    android:layout_weight="2"
+                    android:text="Hello, Good Morning"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:paddingEnd="8dp"/>
 
                 <SearchView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
             </LinearLayout>
 
+            <!-- Banner Image -->
             <ImageView
                 android:id="@+id/imageView22"
-                android:layout_width="411dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/group_56529" />
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/group_56529"/>
 
-            <LinearLayout
+            <!-- Horizontal Scroll Buttons -->
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:overScrollMode="never"
+                android:layout_marginTop="12dp">
 
-                <Button
-                    android:id="@+id/button6"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button"
-                    app:cornerRadius="5dp" />
+                    android:orientation="horizontal">
 
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    <Button
+                        android:id="@+id/button6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/bg_light_green"
+                        android:text="Gain Weight"
+                        android:layout_marginEnd="12dp"
+                        app:cornerRadius="5dp"/>
 
-                <Button
-                    android:id="@+id/button7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button"
-                    app:cornerRadius="5dp" />
+                    <Button
+                        android:id="@+id/button7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00BCD4"
+                        android:text="Lose Weight"
+                        android:layout_marginEnd="12dp"
+                        app:cornerRadius="5dp"/>
 
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    <Button
+                        android:id="@+id/button8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00BCD4"
+                        android:text="Body Building"
+                        android:layout_marginEnd="12dp"
+                        app:cornerRadius="5dp"/>
 
-                <Button
-                    android:id="@+id/button8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button"
-                    app:cornerRadius="5dp" />
+                    <Button
+                        android:id="@+id/button9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00BCD4"
+                        android:text="Healthy"
+                        app:cornerRadius="5dp"/>
+                </LinearLayout>
+            </HorizontalScrollView>
 
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:id="@+id/button9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button"
-                    app:cornerRadius="5dp" />
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="13dp" />
-
+            <!-- Popular Exercise Section -->
             <TextView
                 android:id="@+id/textView24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/bebas_neue"
                 android:text="POPULAR EXERCISE"
-                android:textSize="25dp" />
-
-            <Space android:layout_width="match_parent" android:layout_height="16dp" />
+                android:textSize="25sp"/>
 
             <ImageView
                 android:id="@+id/imageView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                app:srcCompat="@drawable/group_56530" />
+                app:srcCompat="@drawable/group_56530"/>
 
             <TextView
                 android:id="@+id/textView25"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:text="Full Shot Man Stretching Arm" />
+                android:text="Full Shot Man Stretching Arm"/>
 
             <TextView
                 android:id="@+id/textView34"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Beginner" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="21dp" />
+                android:text="Beginner"/>
 
             <ImageView
                 android:id="@+id/imageView15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                app:srcCompat="@drawable/group_56531" />
+                app:srcCompat="@drawable/group_56531"
+                android:layout_marginTop="16dp"/>
 
             <TextView
                 android:id="@+id/textView26"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:text="Athlete Practicing Monochrome" />
+                android:text="Athlete Practicing Monochrome"/>
 
             <TextView
                 android:id="@+id/textView35"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Beginner" />
+                android:text="Beginner"/>
 
-            <Space android:layout_width="match_parent" android:layout_height="18dp" />
-
+            <!-- Meal Plan Section -->
             <TextView
                 android:id="@+id/textView27"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/bebas_neue"
                 android:text="MEAL PLAN"
-                android:textSize="25sp" />
-
-            <Space android:layout_width="match_parent" android:layout_height="13dp" />
+                android:textSize="25sp"/>
 
             <ImageView
                 android:id="@+id/imageView16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                app:srcCompat="@drawable/img" />
+                app:srcCompat="@drawable/img"/>
 
             <TextView
                 android:id="@+id/textView29"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:text="Greek salad with lettuce, green onion, " />
+                android:text="Greek salad with lettuce, green onion,"/>
 
             <TextView
                 android:id="@+id/textView32"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="150 kcal" />
-
-            <Space android:layout_width="match_parent" android:layout_height="27dp" />
+                android:text="150 kcal"/>
 
             <ImageView
                 android:id="@+id/imageView17"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                app:srcCompat="@drawable/img__1_" />
+                app:srcCompat="@drawable/img__1_"
+                android:layout_marginTop="16dp"/>
 
             <TextView
                 android:id="@+id/textView31"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:text="Salad of fresh vegetables" />
+                android:text="Salad of fresh vegetables"/>
 
             <TextView
                 android:id="@+id/textView33"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="270 kcal" />
+                android:text="270 kcal"/>
 
-            <Space android:layout_width="match_parent" android:layout_height="18dp" />
-
+            <!-- Additional Exercise Section -->
             <TextView
                 android:id="@+id/textView36"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/bebas_neue"
-                android:text="Additional Exercise"
-                android:textSize="25dp" />
-
-            <Space android:layout_width="match_parent" android:layout_height="27dp" />
+                android:text="ADDITIONAL EXERCISE"
+                android:textSize="25sp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
 
                 <ImageView
                     android:id="@+id/imageView18"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/group_56536" />
+                    app:srcCompat="@drawable/group_56536"/>
 
                 <ImageView
                     android:id="@+id/imageView13"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/exercises_with_jumping__rope" />
-
+                    app:srcCompat="@drawable/exercises_with_jumping__rope"/>
             </LinearLayout>
-
-            <Space android:layout_width="match_parent" android:layout_height="23dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
 
                 <ImageView
                     android:id="@+id/imageView19"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/group_56537" />
+                    app:srcCompat="@drawable/group_56537"/>
 
                 <ImageView
                     android:id="@+id/imageView20"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/exercises_with_holding_jumping__rope" />
-
+                    app:srcCompat="@drawable/exercises_with_holding_jumping__rope"/>
             </LinearLayout>
-
-            <Space android:layout_width="match_parent" android:layout_height="28dp" />
 
         </LinearLayout>
     </ScrollView>
@@ -291,6 +269,5 @@
         android:layout_gravity="bottom"
         android:background="?android:attr/windowBackground"
         app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_nav_menu" />
-
+        app:menu="@menu/bottom_nav_menu"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

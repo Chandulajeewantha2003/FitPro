@@ -48,20 +48,22 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Breakfast"
-                    android:backgroundTint="#C6EB3B"/>
+                    android:backgroundTint="@color/bg_light_green"
+                    android:text="Breakfast" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lunch"
-                    android:layout_marginStart="8dp"/>
+                    android:layout_marginStart="8dp"
+                    android:backgroundTint="@color/AccentColor1"
+                    android:text="Lunch" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dinner"
-                    android:layout_marginStart="8dp"/>
+                    android:layout_marginStart="8dp"
+                    android:backgroundTint="#00BCD4"
+                    android:text="Dinner" />
             </LinearLayout>
 
 
@@ -70,8 +72,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="12dp">
+                android:backgroundTint="@color/bg_light_green"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -89,8 +92,8 @@
                         android:layout_height="wrap_content"
                         android:padding="12dp"
                         android:text="Green beans, tomatoes, eggs"
-                        android:textStyle="bold"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -102,13 +105,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="135 kcal"/>
+                            android:text="135 kcal" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" • 30 min"
-                            android:layout_marginStart="8dp"/>
+                            android:layout_marginStart="8dp"
+                            android:text=" • 30 min" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -118,8 +121,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="12dp">
+                android:backgroundTint="@color/AccentColor1"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -138,8 +142,8 @@
                         android:layout_height="wrap_content"
                         android:padding="12dp"
                         android:text="Healthy balanced vegetarian food"
-                        android:textStyle="bold"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -151,13 +155,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="155 kcal"/>
+                            android:text="155 kcal" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" • 25 min"
-                            android:layout_marginStart="8dp"/>
+                            android:layout_marginStart="8dp"
+                            android:text=" • 25 min" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -167,8 +171,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="12dp">
+                android:backgroundTint="#00BCD4"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -187,8 +192,8 @@
                         android:layout_height="wrap_content"
                         android:padding="12dp"
                         android:text="Keto/paleo diet: fried eggs, salmon"
-                        android:textStyle="bold"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -200,13 +205,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="220 kcal"/>
+                            android:text="220 kcal" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" • 30 min"
-                            android:layout_marginStart="8dp"/>
+                            android:layout_marginStart="8dp"
+                            android:text=" • 30 min" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
