@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitPro">
         <activity
+            android:name=".MainActivityDinner"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivityLunch"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivityBreakfast"
+            android:exported="false" />
+        <activity
             android:name=".MainActivityProfile"
             android:exported="false" />
         <activity
