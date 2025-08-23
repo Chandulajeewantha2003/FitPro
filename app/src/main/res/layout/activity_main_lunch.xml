@@ -8,76 +8,84 @@
     android:layout_height="match_parent"
     tools:context=".MainActivityLunch">
 
-    <!-- Scrollable Content -->
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvTitleLunch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bebas_neue"
+        android:padding="16dp"
+        android:text="Lunch Meals"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Fixed Buttons Row -->
+    <LinearLayout
+        android:id="@+id/mealTypeButtonsLunch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleLunch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primaryColor"
+            android:text="ALL" />
+
+        <Button
+            android:id="@+id/btnBreakfast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/bg_light_green"
+            android:text="Breakfast" />
+
+        <Button
+            android:id="@+id/btnLunch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/AccentColor1"
+            android:text="Lunch" />
+
+        <Button
+            android:id="@+id/btnDinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#00BCD4"
+            android:text="Diner" />
+    </LinearLayout>
+
+    <!-- Scrollable Meal List -->
     <ScrollView
-        android:id="@+id/scrollView"
+        android:id="@+id/scrollViewLunch"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mealTypeButtonsLunch"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Meals List -->
         <LinearLayout
+            android:id="@+id/mealContainerLunch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp"
             android:paddingBottom="100dp">
-
-            <!-- Meal Type Tabs -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/bebas_neue"
-                android:paddingBottom="8dp"
-                android:text="Healthy balanced vegetarian  food"
-                android:textColor="@android:color/black"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginBottom="16dp">
-
-                <Button
-                    android:id="@+id/btnAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/primaryColor"
-                    android:text="ALL" />
-
-                <Button
-                    android:id="@+id/btnBreakfast"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:backgroundTint="@color/bg_light_green"
-                    android:text="Breakfast" />
-
-                <Button
-                    android:id="@+id/btnLunch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:backgroundTint="@color/AccentColor1"
-                    android:text="Lunch" />
-
-                <Button
-                    android:id="@+id/btnDinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:backgroundTint="#00BCD4"
-                    android:text="Dinner" />
-            </LinearLayout>
-
-
 
             <!-- Meal Card 1 -->
 
@@ -106,7 +114,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="12dp"
-                        android:text="Healthy balanced vegetarian food"
+                        android:text="Healthy balanced vegetarian curry with rice"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -120,13 +128,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="155 kcal" />
+                            android:text="390 kcal" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text=" • 25 min" />
+                            android:text=" • 30 min" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

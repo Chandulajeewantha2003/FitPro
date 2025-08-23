@@ -8,76 +8,84 @@
     android:layout_height="match_parent"
     tools:context=".MainActivityDinner">
 
-    <!-- Scrollable Content -->
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bebas_neue"
+        android:padding="16dp"
+        android:text="Healthy balanced vegetarian food"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Fixed Buttons Row -->
+    <LinearLayout
+        android:id="@+id/mealTypeButtons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primaryColor"
+            android:text="ALL" />
+
+        <Button
+            android:id="@+id/btnBreakfast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/bg_light_green"
+            android:text="Breakfast" />
+
+        <Button
+            android:id="@+id/btnLunch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/AccentColor1"
+            android:text="Lunch" />
+
+        <Button
+            android:id="@+id/btnDinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#00BCD4"
+            android:text="Diner" />
+    </LinearLayout>
+
+    <!-- Scrollable Meal List -->
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mealTypeButtons"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Meals List -->
         <LinearLayout
+            android:id="@+id/mealContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp"
             android:paddingBottom="100dp">
-
-            <!-- Meal Type Tabs -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/bebas_neue"
-                android:paddingBottom="8dp"
-                android:text="Healthy balanced vegetarian  food"
-                android:textColor="@android:color/black"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginBottom="16dp">
-
-                <Button
-                    android:id="@+id/btnAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/primaryColor"
-                    android:text="ALL" />
-
-                <Button
-                    android:id="@+id/btnBreakfast"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:backgroundTint="@color/bg_light_green"
-                    android:text="Breakfast" />
-
-                <Button
-                    android:id="@+id/btnLunch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:backgroundTint="@color/AccentColor1"
-                    android:text="Lunch" />
-
-                <Button
-                    android:id="@+id/btnDinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:backgroundTint="#00BCD4"
-                    android:text="Dinner" />
-            </LinearLayout>
-
-
 
             <!-- Meal Card 1 -->
 
