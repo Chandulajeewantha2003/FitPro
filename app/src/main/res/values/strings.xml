@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">FitPro</string>
+    <string name="welcome_message">Hello, Good Morning</string>
+    <string name="gain_weight">Gain Weight</string>
+    <string name="lose_weight">Lose Weight</string>
+    <string name="body_building">Body Building</string>
+    <string name="healthy">Healthy</string>
+    <string name="popular_exercise">POPULAR EXERCISE</string>
+    <string name="exercise_1_title">Full Shot Man Stretching Arm</string>
+    <string name="exercise_1_level">Beginner</string>
+    <string name="exercise_2_title">Athlete Practicing Monochrome</string>
+    <string name="exercise_2_level">Beginner</string>
+    <string name="meal_plan">MEAL PLAN</string>
+    <string name="meal_1_description">Greek salad with lettuce, green onion,</string>
+    <string name="meal_1_kcal">150 kcal</string>
+    <string name="meal_2_description">Salad of fresh vegetables</string>
+    <string name="meal_2_kcal">270 kcal</string>
+    <string name="additional_exercise">ADDITIONAL EXERCISE</string>
 </resources>
+
+
