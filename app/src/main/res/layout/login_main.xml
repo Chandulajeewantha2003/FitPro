@@ -7,16 +7,6 @@
     android:background="@color/bg_white"
     tools:context=".MainLogin">
 
-    <!-- App Title -->
-
-    <!-- Email Field -->
-
-    <!-- Password Field -->
-
-    <!-- Forgot Password -->
-
-    <!-- Login Button -->
-
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"

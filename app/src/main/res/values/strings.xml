@@ -1,21 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FitPro</string>
-    <string name="welcome_message">Hello, Good Morning</string>
-    <string name="gain_weight">Gain Weight</string>
-    <string name="lose_weight">Lose Weight</string>
-    <string name="body_building">Body Building</string>
-    <string name="healthy">Healthy</string>
-    <string name="popular_exercise">POPULAR EXERCISE</string>
-    <string name="exercise_1_title">Full Shot Man Stretching Arm</string>
-    <string name="exercise_1_level">Beginner</string>
-    <string name="exercise_2_title">Athlete Practicing Monochrome</string>
-    <string name="exercise_2_level">Beginner</string>
-    <string name="meal_plan">MEAL PLAN</string>
-    <string name="meal_1_description">Greek salad with lettuce, green onion,</string>
-    <string name="meal_1_kcal">150 kcal</string>
-    <string name="meal_2_description">Salad of fresh vegetables</string>
-    <string name="meal_2_kcal">270 kcal</string>
-    <string name="additional_exercise">ADDITIONAL EXERCISE</string>
+    <!-- App Name -->
+    <string name="app_name">Fit Pro</string>
+
+    <!-- Splash Screen -->
+    <string name="splash_title">Fit Pro</string>
+
+    <!-- Welcome / Get Started -->
+    <string name="welcome_title">LET\'S GET STARTED</string>
+    <string name="welcome_description">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</string>
+    <string name="welcome_tagline">Sculpt your ideal body, free your true self, transform your life.</string>
+    <string name="btn_get_started">GET STARTED!</string>
+
+    <!-- Login Screen -->
+    <string name="login_welcome">Welcome to FIT PRO!</string>
+    <string name="login_subtitle">Hello there, sign in to continue!</string>
+    <string name="email_label">Email address</string>
+    <string name="password_label">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="btn_login">Login</string>
+    <string name="login_or">Or Login with</string>
+    <string name="login_google">Connect with Google</string>
+    <string name="login_facebook">Connect with Facebook</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_full_name_hint">Full Name</string>
+    <string name="profile_phone_hint">Phone</string>
+    <string name="profile_email_hint">Email address</string>
+    <string name="profile_weight_hint">Weight</string>
+    <string name="profile_height_hint">Height</string>
+    <string name="btn_lbs">LBS</string>
+    <string name="btn_kg">KG</string>
+    <string name="btn_feet">FEET</string>
+    <string name="btn_cm">CM</string>
+    <string name="profile_age_hint">Age</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="btn_save">SAVE</string>
+
+    <!-- Home / Meal Plan -->
+    <string name="meal_title">Healthy balanced vegetarian food</string>
+    <string name="btn_all">ALL</string>
+    <string name="btn_breakfast">Breakfast</string>
+    <string name="btn_lunch">Lunch</string>
+    <string name="btn_dinner">Dinner</string>
+
+    <!-- Sample Meal Cards -->
+    <string name="meal1_name">Green beans, tomatoes, eggs</string>
+    <string name="meal1_info">135 kcal • 30 min</string>
+    <string name="meal2_name">Healthy balanced vegetarian food</string>
+    <string name="meal2_info">155 kcal • 25 min</string>
+    <string name="meal3_name">Keto/paleo diet: fried eggs, salmon</string>
+    <string name="meal3_info">220 kcal • 30 min</string>
+
+    <!-- Exercise Screen -->
+    <string name="exercise_title">FULL EXERCISE</string>
+    <string name="exercise_card1_name">Exercises with Jumping Rope</string>
+    <string name="exercise_card1_info">110 kcal  |  10 min</string>
+    <string name="exercise_card1_level">Beginner</string>
+
+    <string name="exercise_card2_name">Exercises with Sitting Dumbbells</string>
+    <string name="exercise_card2_info">110 kcal  |  10 min</string>
+    <string name="exercise_card2_level">Beginner</string>
+
+    <string name="exercise_card3_name">Exercises with Holding Jumping Rope</string>
+    <string name="exercise_card3_info">110 kcal  |  10 min</string>
+    <string name="exercise_card3_level">Beginner</string>
+
+    <string name="exercise_card4_name">Exercises with Sitting Dumbbells</string>
+    <string name="exercise_card4_info">110 kcal  |  10 min</string>
+    <string name="exercise_card4_level">Beginner</string>
+
+    <string name="exercise_card5_name">Exercises with Sitting Dumbbells</string>
+    <string name="exercise_card5_info">50 kcal  |  5 min</string>
+    <string name="exercise_card5_level">Intermediate</string>
 </resources>
-
-
