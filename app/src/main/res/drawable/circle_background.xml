@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- Base color that will be tinted -->
+    <solid android:color="#FFFFFF" /> <!-- or use #000000 if you want -->
+</shape>

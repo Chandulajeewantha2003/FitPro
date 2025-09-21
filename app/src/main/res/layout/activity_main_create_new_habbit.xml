@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Toggle between Regular and One-Time -->
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleHabitType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:singleSelection="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRegular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Regular Habit"
+                app:cornerRadius="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOneTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="One-Time Task"
+                app:backgroundTint="#837E7E"
+                app:cornerRadius="12dp" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <!-- Habit Name -->
+        <EditText
+            android:id="@+id/etHabitName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Habit Name"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/primaryColor"
+            android:padding="12dp" />
+
+        <!-- Icon Selection -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Icon"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Emoji buttons (use TextView for better emoji support) -->
+                <TextView style="@style/IconEmoji" android:text="🏈"/>
+                <TextView style="@style/IconEmoji" android:text="🏆"/>
+                <TextView style="@style/IconEmoji" android:text="🎖️"/>
+                <TextView style="@style/IconEmoji" android:text="🏀"/>
+                <TextView style="@style/IconEmoji" android:text="🐻"/>
+                <!-- Emoji buttons -->
+                <TextView style="@style/IconEmoji" android:text="😎"/>
+                <TextView style="@style/IconEmoji" android:text="😍"/>
+                <TextView style="@style/IconEmoji" android:text="😘"/>
+                <TextView style="@style/IconEmoji" android:text="😊"/>
+                <TextView style="@style/IconEmoji" android:text="😌"/>
+                <TextView style="@style/IconEmoji" android:text="😏"/>
+                <TextView style="@style/IconEmoji" android:text="😂"/>
+                <TextView style="@style/IconEmoji" android:text="😁"/>
+                <TextView style="@style/IconEmoji" android:text="😢"/>
+                <TextView style="@style/IconEmoji" android:text="🥲"/>
+                <TextView style="@style/IconEmoji" android:text="😱"/>
+                <TextView style="@style/IconEmoji" android:text="🥶"/>
+                <TextView style="@style/IconEmoji" android:text="😘"/>
+                <TextView style="@style/IconEmoji" android:text="😭"/>
+                <TextView style="@style/IconEmoji" android:text="🥱"/>
+                <TextView style="@style/IconEmoji" android:text="🥳"/>
+                <TextView style="@style/IconEmoji" android:text="😴"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Color Picker -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Color"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <GridLayout
+            android:id="@+id/colorGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:columnCount="5">
+
+            <!-- Color circle views -->
+            <View style="@style/ColorCircle"
+                android:backgroundTint="#FFF9C4" />
+            <View style="@style/ColorCircle"
+                android:backgroundTint="#FFE0B2" />
+            <View style="@style/ColorCircle"
+                android:backgroundTint="#BCAAA4" />
+            <View style="@style/ColorCircle"
+                android:backgroundTint="#D7CCC8" />
+            <View style="@style/ColorCircle"
+                android:backgroundTint="#EF9A9A" />
+            <View style="@style/ColorCircle"
+                android:backgroundTint="#F48FB1" />
+            <View style="@style/ColorCircle"
+                android:backgroundTint="#F8BBD0" />
+            <View style="@style/ColorCircle"
+                android:backgroundTint="#CE93D8" />
+            <View style="@style/ColorCircle"
+                android:backgroundTint="#B39DDB" />
+            <View style="@style/ColorCircle"
+                android:backgroundTint="#C5CAE9" />
+        </GridLayout>
+
+        <!-- Repeat Options -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Repeat"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleRepeat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDaily"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Daily" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnWeekly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Weekly"
+                app:backgroundTint="#837E7E" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMonthly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Monthly"
+                app:backgroundTint="#837E7E" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <!-- Days of Week -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On these day:"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:scrollbars="none">
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggleDays"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleSelection="false"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="S" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="T"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="W"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="T"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="F"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="S"/>
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+        </HorizontalScrollView>
+
+
+        <!-- Time of Day -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Do it at:"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <!-- Toggles -->
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleTimeOfDay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:singleSelection="false">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Morning" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Afternoon" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Evening" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <Switch
+            android:id="@+id/switchEndHabit"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:text="End Habit on" />
+
+        <Switch
+            android:id="@+id/switchReminder"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Set Reminder" />
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/btnSaveHabit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/AccentColor2"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+</ScrollView>
