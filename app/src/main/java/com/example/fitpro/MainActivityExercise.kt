@@ -1,55 +1,47 @@
 package com.example.fitpro
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivityExercise : AppCompatActivity() {
 
     private lateinit var customExerciseContainer: LinearLayout
 
-    // ✅ Launcher to get result from MainAllExercises
-    private val pickExerciseLauncher =
+    private val selectExerciseLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val exerciseName = result.data?.getStringExtra("exerciseName")
-                exerciseName?.let { addExerciseCard(it) }
+            if (result.resultCode == Activity.RESULT_OK) {
+                val selectedExercises =
+                    result.data?.getSerializableExtra("selectedExercises") as? ArrayList<Exercise>
+
+                selectedExercises?.forEach { exercise ->
+                    addExerciseCard(exercise)
+                }
             }
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main_exercise)
-
-        // Handle system bar insets
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
         customExerciseContainer = findViewById(R.id.customExerciseContainer)
         val btnAddExercise = findViewById<Button>(R.id.btnAddExercise)
 
-        // ✅ Open MainAllExercises instead of adding dummy card
         btnAddExercise.setOnClickListener {
             val intent = Intent(this, MainAllExersizes::class.java)
-            pickExerciseLauncher.launch(intent)
+            selectExerciseLauncher.launch(intent)
         }
 
-        // ✅ Bottom navigation setup
+        // ✅ Bottom Navigation Setup
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigationView.selectedItemId = R.id.nav_exercise
+        bottomNavigationView.selectedItemId = R.id.nav_exercise // Highlight Exercise tab
 
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -65,7 +57,10 @@ class MainActivityExercise : AppCompatActivity() {
                     finish()
                     true
                 }
-                R.id.nav_exercise -> true
+                R.id.nav_exercise -> {
+                    // Already on exercise screen
+                    true
+                }
                 R.id.nav_profile -> {
                     startActivity(Intent(this, MainActivityProfile::class.java))
                     overridePendingTransition(0, 0)
@@ -77,17 +72,21 @@ class MainActivityExercise : AppCompatActivity() {
         }
     }
 
-    // ✅ Add exercise card dynamically
-    private fun addExerciseCard(name: String) {
-        val inflater = LayoutInflater.from(this)
-        val cardView = inflater.inflate(R.layout.custom_exercise_card, customExerciseContainer, false)
+    private fun addExerciseCard(exercise: Exercise) {
+        val cardView = layoutInflater.inflate(R.layout.custom_exercise_card, null)
 
-        val tvExerciseName = cardView.findViewById<TextView>(R.id.tvExerciseName)
-        val btnDelete = cardView.findViewById<Button>(R.id.btnDelete)
+        val img = cardView.findViewById<ImageView>(R.id.imgExercise)
+        val name = cardView.findViewById<TextView>(R.id.tvExerciseName)
+        val kcalTime = cardView.findViewById<TextView>(R.id.tvKcalTime)
+        val level = cardView.findViewById<TextView>(R.id.tvLevel)
+        val btnRemove = cardView.findViewById<Button>(R.id.btnRemoveExercise)
 
-        tvExerciseName.text = name
+        img.setImageResource(exercise.imageRes)
+        name.text = exercise.name
+        kcalTime.text = "${exercise.kcal} | ${exercise.time}"
+        level.text = exercise.level
 
-        btnDelete.setOnClickListener {
+        btnRemove.setOnClickListener {
             customExerciseContainer.removeView(cardView)
         }
 
