@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitPro">
         <activity
+            android:name=".MainAllExersizes"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivityCustom"
+            android:exported="false" />
+        <activity
+            android:name=".MainHabbits"
+            android:exported="false" />
+        <activity
+            android:name=".habits"
+            android:exported="false" />
+        <activity
             android:name=".MainActivityDinner"
             android:exported="false" />
         <activity
