@@ -71,12 +71,20 @@ class MainActivityCreateHabbits : AppCompatActivity() {
 
     private fun setupEmojiSelection() {
         val emojiViews = emojiContainer.findViewsWithType(TextView::class.java)
+
         emojiViews.forEach { emojiView ->
             emojiView.setOnClickListener {
                 selectedIcon = emojiView.text.toString()
+
+                // Reset all emojis (remove border)
+                emojiViews.forEach { it.background = null }
+
+                // Add border to selected emoji
+                emojiView.setBackgroundResource(R.drawable.emoji_selected_border)
             }
         }
     }
+
 
     private fun setupColorSelection() {
         for (i in 0 until colorGrid.childCount) {
