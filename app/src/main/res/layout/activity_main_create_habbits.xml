@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivityCreateHabbits">
+
+    <!-- Scrollable content -->
+    <ScrollView
+        android:id="@+id/scrollContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:background="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Toggle between Regular and One-Time -->
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggleHabitType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRegular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Regular Habit" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOneTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="One-Time Task" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <!-- Habit Name -->
+            <EditText
+                android:id="@+id/etHabitName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Habit Name"
+                android:layout_marginTop="16dp"
+                android:padding="12dp"
+                android:backgroundTint="@color/AccentColor1" />
+
+            <!-- Icon Selection -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Icon"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/emojiContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Emojis -->
+                    <!-- Sports & Activities -->
+                    <TextView style="@style/IconEmoji" android:text="🎨"/> <!-- Art -->
+                    <TextView style="@style/IconEmoji" android:text="🏈"/> <!-- Football -->
+                    <TextView style="@style/IconEmoji" android:text="🏆"/> <!-- Trophy -->
+                    <TextView style="@style/IconEmoji" android:text="🎖️"/> <!-- Medal -->
+                    <TextView style="@style/IconEmoji" android:text="🏀"/> <!-- Basketball -->
+                    <TextView style="@style/IconEmoji" android:text="⚽"/> <!-- Soccer -->
+                    <TextView style="@style/IconEmoji" android:text="🎾"/> <!-- Tennis -->
+                    <TextView style="@style/IconEmoji" android:text="🏐"/> <!-- Volleyball -->
+                    <TextView style="@style/IconEmoji" android:text="🏉"/> <!-- Rugby -->
+                    <TextView style="@style/IconEmoji" android:text="🎳"/> <!-- Bowling -->
+                    <TextView style="@style/IconEmoji" android:text="⛷️"/> <!-- Skiing -->
+                    <TextView style="@style/IconEmoji" android:text="🏋️"/> <!-- Weightlifting -->
+
+                    <!-- Emojis for Mood & Fun -->
+                    <TextView style="@style/IconEmoji" android:text="😎"/>
+                    <TextView style="@style/IconEmoji" android:text="😍"/>
+                    <TextView style="@style/IconEmoji" android:text="😘"/>
+                    <TextView style="@style/IconEmoji" android:text="😊"/>
+                    <TextView style="@style/IconEmoji" android:text="😌"/>
+                    <TextView style="@style/IconEmoji" android:text="😏"/>
+                    <TextView style="@style/IconEmoji" android:text="😂"/>
+                    <TextView style="@style/IconEmoji" android:text="😁"/>
+                    <TextView style="@style/IconEmoji" android:text="😢"/>
+                    <TextView style="@style/IconEmoji" android:text="🥲"/>
+                    <TextView style="@style/IconEmoji" android:text="😱"/>
+                    <TextView style="@style/IconEmoji" android:text="🥶"/>
+                    <TextView style="@style/IconEmoji" android:text="😭"/>
+                    <TextView style="@style/IconEmoji" android:text="🥱"/>
+                    <TextView style="@style/IconEmoji" android:text="🥳"/>
+                    <TextView style="@style/IconEmoji" android:text="😴"/>
+                    <TextView style="@style/IconEmoji" android:text="🧘"/> <!-- Yoga -->
+                    <TextView style="@style/IconEmoji" android:text="🏃"/> <!-- Running -->
+                    <TextView style="@style/IconEmoji" android:text="🚴"/> <!-- Cycling -->
+                    <TextView style="@style/IconEmoji" android:text="🏊"/> <!-- Swimming -->
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Color Picker -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Color"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <GridLayout
+                android:id="@+id/colorGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:columnCount="5">
+
+                <View style="@style/ColorCircle" android:backgroundTint="#FFF9C4" />
+                <View style="@style/ColorCircle" android:backgroundTint="#FFCDD2" />
+                <View style="@style/ColorCircle" android:backgroundTint="#BBDEFB" />
+                <View style="@style/ColorCircle" android:backgroundTint="#C8E6C9" />
+                <View style="@style/ColorCircle" android:backgroundTint="#D1C4E9" />
+            </GridLayout>
+
+            <!-- Calendar -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pick Date"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+
+            <!-- Time of Day -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Do it at:"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggleTimeOfDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:singleSelection="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMorning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Morning" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAfternoon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Afternoon" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEvening"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Evening" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <!-- Switches -->
+            <Switch
+                android:id="@+id/switchEndHabit"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:text="End Habit on" />
+
+            <Switch
+                android:id="@+id/switchReminder"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Set Reminder" />
+
+            <!-- Save Button -->
+            <Button
+                android:id="@+id/btnSaveHabit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/AccentColor2"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
