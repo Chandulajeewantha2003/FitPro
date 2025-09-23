@@ -9,7 +9,6 @@
     android:fitsSystemWindows="true"
     tools:context=".MainActivityCreateHabbits">
 
-    <!-- Scrollable content -->
     <ScrollView
         android:id="@+id/scrollContent"
         android:layout_width="0dp"
@@ -27,7 +26,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Toggle between Regular and One-Time -->
+            <!-- Habit Type Toggle -->
             <com.google.android.material.button.MaterialButtonToggleGroup
                 android:id="@+id/toggleHabitType"
                 android:layout_width="match_parent"
@@ -59,7 +58,7 @@
                 android:padding="12dp"
                 android:backgroundTint="@color/AccentColor1" />
 
-            <!-- Icon Selection -->
+            <!-- Emoji Selection -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -80,21 +79,18 @@
                     android:orientation="horizontal">
 
                     <!-- Emojis -->
-                    <!-- Sports & Activities -->
-                    <TextView style="@style/IconEmoji" android:text="🎨"/> <!-- Art -->
-                    <TextView style="@style/IconEmoji" android:text="🏈"/> <!-- Football -->
-                    <TextView style="@style/IconEmoji" android:text="🏆"/> <!-- Trophy -->
-                    <TextView style="@style/IconEmoji" android:text="🎖️"/> <!-- Medal -->
-                    <TextView style="@style/IconEmoji" android:text="🏀"/> <!-- Basketball -->
-                    <TextView style="@style/IconEmoji" android:text="⚽"/> <!-- Soccer -->
-                    <TextView style="@style/IconEmoji" android:text="🎾"/> <!-- Tennis -->
-                    <TextView style="@style/IconEmoji" android:text="🏐"/> <!-- Volleyball -->
-                    <TextView style="@style/IconEmoji" android:text="🏉"/> <!-- Rugby -->
-                    <TextView style="@style/IconEmoji" android:text="🎳"/> <!-- Bowling -->
-                    <TextView style="@style/IconEmoji" android:text="⛷️"/> <!-- Skiing -->
-                    <TextView style="@style/IconEmoji" android:text="🏋️"/> <!-- Weightlifting -->
-
-                    <!-- Emojis for Mood & Fun -->
+                    <TextView style="@style/IconEmoji" android:text="🎨"/>
+                    <TextView style="@style/IconEmoji" android:text="🏈"/>
+                    <TextView style="@style/IconEmoji" android:text="🏆"/>
+                    <TextView style="@style/IconEmoji" android:text="🎖️"/>
+                    <TextView style="@style/IconEmoji" android:text="🏀"/>
+                    <TextView style="@style/IconEmoji" android:text="⚽"/>
+                    <TextView style="@style/IconEmoji" android:text="🎾"/>
+                    <TextView style="@style/IconEmoji" android:text="🏐"/>
+                    <TextView style="@style/IconEmoji" android:text="🏉"/>
+                    <TextView style="@style/IconEmoji" android:text="🎳"/>
+                    <TextView style="@style/IconEmoji" android:text="⛷️"/>
+                    <TextView style="@style/IconEmoji" android:text="🏋️"/>
                     <TextView style="@style/IconEmoji" android:text="😎"/>
                     <TextView style="@style/IconEmoji" android:text="😍"/>
                     <TextView style="@style/IconEmoji" android:text="😘"/>
@@ -111,11 +107,10 @@
                     <TextView style="@style/IconEmoji" android:text="🥱"/>
                     <TextView style="@style/IconEmoji" android:text="🥳"/>
                     <TextView style="@style/IconEmoji" android:text="😴"/>
-                    <TextView style="@style/IconEmoji" android:text="🧘"/> <!-- Yoga -->
-                    <TextView style="@style/IconEmoji" android:text="🏃"/> <!-- Running -->
-                    <TextView style="@style/IconEmoji" android:text="🚴"/> <!-- Cycling -->
-                    <TextView style="@style/IconEmoji" android:text="🏊"/> <!-- Swimming -->
-
+                    <TextView style="@style/IconEmoji" android:text="🧘"/>
+                    <TextView style="@style/IconEmoji" android:text="🏃"/>
+                    <TextView style="@style/IconEmoji" android:text="🚴"/>
+                    <TextView style="@style/IconEmoji" android:text="🏊"/>
                 </LinearLayout>
             </HorizontalScrollView>
 
@@ -155,7 +150,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp" />
 
-            <!-- Time of Day -->
+            <!-- Time of Day Toggle -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -189,14 +184,15 @@
                     android:text="Evening" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
-            <!-- Switches -->
-            <Switch
-                android:id="@+id/switchEndHabit"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
-                android:text="End Habit on" />
+            <!-- Select Custom Time -->
+            <Button
+                android:id="@+id/btnSelectTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Time"
+                android:layout_marginTop="16dp"/>
 
+            <!-- Switches -->
             <Switch
                 android:id="@+id/switchReminder"
                 android:layout_width="match_parent"
@@ -212,6 +208,7 @@
                 android:layout_marginTop="24dp"
                 android:backgroundTint="@color/AccentColor2"
                 android:textColor="@android:color/white" />
+
         </LinearLayout>
     </ScrollView>
 

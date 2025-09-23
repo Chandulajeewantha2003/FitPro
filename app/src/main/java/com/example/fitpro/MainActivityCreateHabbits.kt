@@ -1,5 +1,6 @@
 package com.example.fitpro
 
+import android.app.TimePickerDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.*
@@ -19,6 +20,7 @@ class MainActivityCreateHabbits : AppCompatActivity() {
     private lateinit var btnSaveHabit: Button
     private lateinit var emojiContainer: LinearLayout
     private lateinit var colorGrid: GridLayout
+    private lateinit var btnSelectTime: Button
 
     private var selectedHabitType: String = "Regular"
     private var selectedIcon: String? = null
@@ -27,6 +29,8 @@ class MainActivityCreateHabbits : AppCompatActivity() {
     private var selectedMonth: Int = -1
     private var selectedYear: Int = -1
     private var selectedTimeOfDay: String? = null
+    private var selectedHour: Int = -1
+    private var selectedMinute: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,12 +52,14 @@ class MainActivityCreateHabbits : AppCompatActivity() {
         btnSaveHabit = findViewById(R.id.btnSaveHabit)
         emojiContainer = findViewById(R.id.emojiContainer)
         colorGrid = findViewById(R.id.colorGrid)
+        btnSelectTime = findViewById(R.id.btnSelectTime)
 
         setupHabitTypeToggle()
         setupEmojiSelection()
         setupColorSelection()
         setupCalendar()
         setupTimeOfDayToggle()
+        setupTimePicker()
         setupSaveButton()
     }
 
@@ -69,22 +75,19 @@ class MainActivityCreateHabbits : AppCompatActivity() {
         }
     }
 
+
     private fun setupEmojiSelection() {
         val emojiViews = emojiContainer.findViewsWithType(TextView::class.java)
-
         emojiViews.forEach { emojiView ->
             emojiView.setOnClickListener {
                 selectedIcon = emojiView.text.toString()
-
                 // Reset all emojis (remove border)
                 emojiViews.forEach { it.background = null }
-
                 // Add border to selected emoji
                 emojiView.setBackgroundResource(R.drawable.emoji_selected_border)
             }
         }
     }
-
 
     private fun setupColorSelection() {
         for (i in 0 until colorGrid.childCount) {
@@ -100,8 +103,14 @@ class MainActivityCreateHabbits : AppCompatActivity() {
     }
 
     private fun setupCalendar() {
-        val startCalendar = Calendar.getInstance()
-        calendarView.minDate = startCalendar.timeInMillis
+        val today = Calendar.getInstance()
+        calendarView.minDate = today.timeInMillis // prevent past selection
+        calendarView.date = today.timeInMillis // default to today
+
+        selectedDay = today.get(Calendar.DAY_OF_MONTH)
+        selectedMonth = today.get(Calendar.MONTH) + 1
+        selectedYear = today.get(Calendar.YEAR)
+
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             selectedDay = dayOfMonth
             selectedMonth = month + 1
@@ -122,6 +131,27 @@ class MainActivityCreateHabbits : AppCompatActivity() {
         }
     }
 
+    private fun setupTimePicker() {
+        btnSelectTime.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val hour = if (selectedHour != -1) selectedHour else calendar.get(Calendar.HOUR_OF_DAY)
+            val minute = if (selectedMinute != -1) selectedMinute else calendar.get(Calendar.MINUTE)
+
+            val timePickerDialog = TimePickerDialog(this, { _, hourOfDay, minuteOfHour ->
+                selectedHour = hourOfDay
+                selectedMinute = minuteOfHour
+
+                // Update button text
+                val formattedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
+                btnSelectTime.text = formattedTime
+
+                // Save selectedTimeOfDay (don't reset morning/afternoon/evening)
+                selectedTimeOfDay = formattedTime
+            }, hour, minute, false)
+            timePickerDialog.show()
+        }
+    }
+
     private fun setupSaveButton() {
         btnSaveHabit.setOnClickListener {
             val name = etHabitName.text.toString()
@@ -130,7 +160,6 @@ class MainActivityCreateHabbits : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Save habit in global list
             MainHome.habitList.add(
                 MainHome.Habit(
                     name,
@@ -140,7 +169,7 @@ class MainActivityCreateHabbits : AppCompatActivity() {
                     selectedTimeOfDay ?: ""
                 )
             )
-            finish() // return to MainHome
+            finish()
         }
     }
 
