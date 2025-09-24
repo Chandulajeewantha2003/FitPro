@@ -1,6 +1,7 @@
 package com.example.fitpro
 
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.*
@@ -8,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButtonToggleGroup
 import java.util.*
 
@@ -54,6 +56,7 @@ class MainActivityCreateHabbits : AppCompatActivity() {
         colorGrid = findViewById(R.id.colorGrid)
         btnSelectTime = findViewById(R.id.btnSelectTime)
 
+        // ✅ Setup functions
         setupHabitTypeToggle()
         setupEmojiSelection()
         setupColorSelection()
@@ -61,6 +64,38 @@ class MainActivityCreateHabbits : AppCompatActivity() {
         setupTimeOfDayToggle()
         setupTimePicker()
         setupSaveButton()
+
+        // ✅ Bottom navigation logic
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.selectedItemId = R.id.nav_meal // Highlight "Meal"
+
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(this, MainHome::class.java))
+                    overridePendingTransition(0, 0)
+                    finish()
+                    true
+                }
+                R.id.nav_meal -> {
+                    // Already on Meal screen
+                    true
+                }
+                R.id.nav_exercise -> {
+                    startActivity(Intent(this, MainActivityExercise::class.java))
+                    overridePendingTransition(0, 0)
+                    finish()
+                    true
+                }
+                R.id.nav_profile -> {
+                    startActivity(Intent(this, MainActivityProfile::class.java))
+                    overridePendingTransition(0, 0)
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun setupHabitTypeToggle() {
@@ -74,7 +109,6 @@ class MainActivityCreateHabbits : AppCompatActivity() {
             }
         }
     }
-
 
     private fun setupEmojiSelection() {
         val emojiViews = emojiContainer.findViewsWithType(TextView::class.java)
@@ -104,8 +138,8 @@ class MainActivityCreateHabbits : AppCompatActivity() {
 
     private fun setupCalendar() {
         val today = Calendar.getInstance()
-        calendarView.minDate = today.timeInMillis // prevent past selection
-        calendarView.date = today.timeInMillis // default to today
+        calendarView.minDate = today.timeInMillis
+        calendarView.date = today.timeInMillis
 
         selectedDay = today.get(Calendar.DAY_OF_MONTH)
         selectedMonth = today.get(Calendar.MONTH) + 1
@@ -145,7 +179,7 @@ class MainActivityCreateHabbits : AppCompatActivity() {
                 val formattedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
                 btnSelectTime.text = formattedTime
 
-                // Save selectedTimeOfDay (don't reset morning/afternoon/evening)
+                // Save selectedTimeOfDay
                 selectedTimeOfDay = formattedTime
             }, hour, minute, false)
             timePickerDialog.show()

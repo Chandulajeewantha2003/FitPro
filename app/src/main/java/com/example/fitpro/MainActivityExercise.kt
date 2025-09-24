@@ -21,6 +21,8 @@ class MainActivityExercise : AppCompatActivity() {
                 val selectedExercises =
                     result.data?.getSerializableExtra("selectedExercises") as? ArrayList<Exercise>
 
+                // 🔹 Clear old and reload new
+                customExerciseContainer.removeAllViews()
                 selectedExercises?.forEach { exercise ->
                     addExerciseCard(exercise)
                 }
@@ -36,6 +38,26 @@ class MainActivityExercise : AppCompatActivity() {
 
         btnAddExercise.setOnClickListener {
             val intent = Intent(this, MainAllExersizes::class.java)
+
+            // 🔹 Collect currently added exercises
+            val currentExercises = arrayListOf<Exercise>()
+            for (i in 0 until customExerciseContainer.childCount) {
+                val cardView = customExerciseContainer.getChildAt(i)
+                val name = cardView.findViewById<TextView>(R.id.tvExerciseName).text.toString()
+                val kcalTime = cardView.findViewById<TextView>(R.id.tvKcalTime).text.toString()
+                val level = cardView.findViewById<TextView>(R.id.tvLevel).text.toString()
+                val imgRes = cardView.findViewById<ImageView>(R.id.imgExercise).tag as? Int ?: 0
+
+                val parts = kcalTime.split("|").map { it.trim() }
+                val kcal = parts.getOrNull(0) ?: ""
+                val time = parts.getOrNull(1) ?: ""
+
+                currentExercises.add(Exercise(name, kcal, time, level, imgRes))
+            }
+
+            // 🔹 Send existing list to MainAllExersizes
+            intent.putExtra("selectedExercises", currentExercises)
+
             selectExerciseLauncher.launch(intent)
         }
 
@@ -57,10 +79,7 @@ class MainActivityExercise : AppCompatActivity() {
                     finish()
                     true
                 }
-                R.id.nav_exercise -> {
-                    // Already on exercise screen
-                    true
-                }
+                R.id.nav_exercise -> true // Already here
                 R.id.nav_profile -> {
                     startActivity(Intent(this, MainActivityProfile::class.java))
                     overridePendingTransition(0, 0)
@@ -82,6 +101,7 @@ class MainActivityExercise : AppCompatActivity() {
         val btnRemove = cardView.findViewById<Button>(R.id.btnRemoveExercise)
 
         img.setImageResource(exercise.imageRes)
+        img.tag = exercise.imageRes // 🔹 store resource id for reuse
         name.text = exercise.name
         kcalTime.text = "${exercise.kcal} | ${exercise.time}"
         level.text = exercise.level
