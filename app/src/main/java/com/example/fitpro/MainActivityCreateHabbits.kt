@@ -33,6 +33,7 @@ class MainActivityCreateHabbits : AppCompatActivity() {
     private var selectedTimeOfDay: String? = null
     private var selectedHour: Int = -1
     private var selectedMinute: Int = -1
+    private var selectedExactTime: String? = null // HH:mm format
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +57,7 @@ class MainActivityCreateHabbits : AppCompatActivity() {
         colorGrid = findViewById(R.id.colorGrid)
         btnSelectTime = findViewById(R.id.btnSelectTime)
 
-        // ✅ Setup functions
+        // Setup all functions
         setupHabitTypeToggle()
         setupEmojiSelection()
         setupColorSelection()
@@ -65,9 +66,9 @@ class MainActivityCreateHabbits : AppCompatActivity() {
         setupTimePicker()
         setupSaveButton()
 
-        // ✅ Bottom navigation logic
+        // Bottom navigation logic
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigationView.selectedItemId = R.id.nav_meal // Highlight "Meal"
+        bottomNavigationView.selectedItemId = R.id.nav_meal
 
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -77,10 +78,7 @@ class MainActivityCreateHabbits : AppCompatActivity() {
                     finish()
                     true
                 }
-                R.id.nav_meal -> {
-                    // Already on Meal screen
-                    true
-                }
+                R.id.nav_meal -> true // Already here
                 R.id.nav_exercise -> {
                     startActivity(Intent(this, MainActivityExercise::class.java))
                     overridePendingTransition(0, 0)
@@ -98,6 +96,9 @@ class MainActivityCreateHabbits : AppCompatActivity() {
         }
     }
 
+    // ------------------------------
+    // Habit Type Toggle
+    // ------------------------------
     private fun setupHabitTypeToggle() {
         toggleHabitType.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (isChecked) {
@@ -110,32 +111,37 @@ class MainActivityCreateHabbits : AppCompatActivity() {
         }
     }
 
+    // ------------------------------
+    // Emoji Selection
+    // ------------------------------
     private fun setupEmojiSelection() {
         val emojiViews = emojiContainer.findViewsWithType(TextView::class.java)
         emojiViews.forEach { emojiView ->
             emojiView.setOnClickListener {
                 selectedIcon = emojiView.text.toString()
-                // Reset all emojis (remove border)
-                emojiViews.forEach { it.background = null }
-                // Add border to selected emoji
+                emojiViews.forEach { it.background = null } // reset border
                 emojiView.setBackgroundResource(R.drawable.emoji_selected_border)
             }
         }
     }
 
+    // ------------------------------
+    // Color Selection
+    // ------------------------------
     private fun setupColorSelection() {
         for (i in 0 until colorGrid.childCount) {
             val colorView = colorGrid.getChildAt(i)
             colorView.setOnClickListener {
-                for (j in 0 until colorGrid.childCount) {
-                    colorGrid.getChildAt(j).alpha = 1.0f
-                }
+                for (j in 0 until colorGrid.childCount) colorGrid.getChildAt(j).alpha = 1.0f
                 colorView.alpha = 0.5f
                 selectedColor = colorView.backgroundTintList?.defaultColor ?: Color.GRAY
             }
         }
     }
 
+    // ------------------------------
+    // Calendar
+    // ------------------------------
     private fun setupCalendar() {
         val today = Calendar.getInstance()
         calendarView.minDate = today.timeInMillis
@@ -152,6 +158,9 @@ class MainActivityCreateHabbits : AppCompatActivity() {
         }
     }
 
+    // ------------------------------
+    // Time of Day Toggle
+    // ------------------------------
     private fun setupTimeOfDayToggle() {
         toggleTimeOfDay.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (isChecked) {
@@ -161,31 +170,55 @@ class MainActivityCreateHabbits : AppCompatActivity() {
                     R.id.btnEvening -> "Evening"
                     else -> null
                 }
+                // Update default time immediately
+                setDefaultTimeForTimeOfDay()
             }
         }
     }
 
+    // ------------------------------
+    // Time Picker
+    // ------------------------------
     private fun setupTimePicker() {
         btnSelectTime.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val hour = if (selectedHour != -1) selectedHour else calendar.get(Calendar.HOUR_OF_DAY)
-            val minute = if (selectedMinute != -1) selectedMinute else calendar.get(Calendar.MINUTE)
+            val defaultHour = if (selectedHour != -1) selectedHour else getDefaultHour()
+            val defaultMinute = if (selectedMinute != -1) selectedMinute else 0
 
-            val timePickerDialog = TimePickerDialog(this, { _, hourOfDay, minuteOfHour ->
-                selectedHour = hourOfDay
-                selectedMinute = minuteOfHour
-
-                // Update button text
-                val formattedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
-                btnSelectTime.text = formattedTime
-
-                // Save selectedTimeOfDay
-                selectedTimeOfDay = formattedTime
-            }, hour, minute, false)
+            val timePickerDialog = TimePickerDialog(
+                this,
+                { _, hourOfDay, minuteOfHour ->
+                    selectedHour = hourOfDay
+                    selectedMinute = minuteOfHour
+                    selectedExactTime = String.format("%02d:%02d", selectedHour, selectedMinute)
+                    btnSelectTime.text = selectedExactTime
+                },
+                defaultHour,
+                defaultMinute,
+                false
+            )
             timePickerDialog.show()
         }
     }
 
+    private fun getDefaultHour(): Int {
+        return when (selectedTimeOfDay) {
+            "Morning" -> 0       // 12 AM
+            "Afternoon" -> 12    // 12 PM
+            "Evening" -> 18      // 6 PM
+            else -> 0
+        }
+    }
+
+    private fun setDefaultTimeForTimeOfDay() {
+        selectedHour = getDefaultHour()
+        selectedMinute = 0
+        selectedExactTime = String.format("%02d:%02d", selectedHour, selectedMinute)
+        btnSelectTime.text = selectedExactTime
+    }
+
+    // ------------------------------
+    // Save Button
+    // ------------------------------
     private fun setupSaveButton() {
         btnSaveHabit.setOnClickListener {
             val name = etHabitName.text.toString()
@@ -194,29 +227,38 @@ class MainActivityCreateHabbits : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            // Ensure timeOfDay and exact time are selected
+            val timeOfDay = selectedTimeOfDay ?: "Morning"
+            val exactTime = selectedExactTime ?: when(timeOfDay) {
+                "Morning" -> "12:00 AM"
+                "Afternoon" -> "12:00 PM"
+                "Evening" -> "06:00 PM"
+                else -> "12:00 AM"
+            }
+
             MainHome.habitList.add(
                 MainHome.Habit(
-                    name,
-                    selectedIcon ?: "🎯",
-                    selectedColor ?: Color.LTGRAY,
-                    "$selectedDay/$selectedMonth/$selectedYear",
-                    selectedTimeOfDay ?: ""
+                    name = name,
+                    icon = selectedIcon ?: "🎯",
+                    color = selectedColor ?: Color.LTGRAY,
+                    date = "$selectedDay/$selectedMonth/$selectedYear",
+                    timeOfDay = timeOfDay, //timeOfDay = "$timeOfDay ($exactTime)"
+                    completed = false,
+                    progress = 0
                 )
             )
+
+            Toast.makeText(this, "Habit saved! ($timeOfDay at $exactTime)", Toast.LENGTH_SHORT).show()
             finish()
         }
     }
 
-    // Recursive extension to find all TextViews inside layout
+    // Recursive extension to find all TextViews inside a layout
     private fun <T : android.view.View> android.view.View.findViewsWithType(type: Class<T>): List<T> {
         val result = mutableListOf<T>()
-        if (type.isInstance(this)) {
-            result.add(this as T)
-        }
+        if (type.isInstance(this)) result.add(this as T)
         if (this is android.view.ViewGroup) {
-            for (i in 0 until childCount) {
-                result.addAll(getChildAt(i).findViewsWithType(type))
-            }
+            for (i in 0 until childCount) result.addAll(getChildAt(i).findViewsWithType(type))
         }
         return result
     }

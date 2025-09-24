@@ -31,9 +31,10 @@ class MainHome : AppCompatActivity() {
         val icon: String,
         val color: Int,
         val date: String,
-        val timeOfDay: String,      // Consistent field for filtering
+        val timeOfDay: String,
+        val exactTime: String = "", // HH:mm format
         var completed: Boolean = false,
-        var reminder: Boolean = false
+        var progress: Int = 0
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -143,8 +144,12 @@ class MainHome : AppCompatActivity() {
         }
 
         val linearLayout = LinearLayout(this).apply {
-            orientation = LinearLayout.HORIZONTAL
+            orientation = LinearLayout.VERTICAL
             setPadding(24, 24, 24, 24)
+        }
+
+        val topRow = LinearLayout(this).apply {
+            orientation = LinearLayout.HORIZONTAL
             gravity = Gravity.CENTER_VERTICAL
         }
 
@@ -154,7 +159,7 @@ class MainHome : AppCompatActivity() {
         }
 
         val nameView = TextView(this).apply {
-            text = "${habit.name}\n${habit.date} | ${habit.timeOfDay}"
+            text = "${habit.name}\n${habit.date} | ${habit.timeOfDay} (${habit.exactTime})"
             textSize = 18f
             setPadding(16, 0, 0, 0)
             layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
@@ -164,16 +169,53 @@ class MainHome : AppCompatActivity() {
         checkbox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 habit.completed = true
+                habit.progress = 100
                 habitContainer.removeView(card)
                 addCompletedHabitCard(habit)
             }
         }
 
-        linearLayout.addView(iconView)
-        linearLayout.addView(nameView)
-        linearLayout.addView(checkbox)
+        topRow.addView(iconView)
+        topRow.addView(nameView)
+        topRow.addView(checkbox)
+
+        // Progress bar and percentage
+        val progressBar = ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal).apply {
+            max = 100
+            progress = habit.progress
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                24
+            ).apply { topMargin = 12 }
+        }
+
+        val progressText = TextView(this).apply {
+            text = "${habit.progress}%"
+            textSize = 14f
+            setPadding(0, 4, 0, 0)
+        }
+
+        linearLayout.addView(topRow)
+        linearLayout.addView(progressBar)
+        linearLayout.addView(progressText)
+
         card.addView(linearLayout)
         habitContainer.addView(card)
+
+        // Increment progress on click
+        card.setOnClickListener {
+            if (habit.progress < 100) {
+                habit.progress += 10
+                if (habit.progress > 100) habit.progress = 100
+                progressBar.progress = habit.progress
+                progressText.text = "${habit.progress}%"
+                if (habit.progress == 100) {
+                    habit.completed = true
+                    habitContainer.removeView(card)
+                    addCompletedHabitCard(habit)
+                }
+            }
+        }
     }
 
     private fun addCompletedHabitCard(habit: Habit) {
@@ -199,13 +241,21 @@ class MainHome : AppCompatActivity() {
         }
 
         val nameView = TextView(this).apply {
-            text = "${habit.name}\n${habit.date} | ${habit.timeOfDay}"
+            text = "${habit.name}\n${habit.date} | ${habit.timeOfDay} (${habit.exactTime})"
             textSize = 18f
+            setPadding(16, 0, 0, 0)
+            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+        }
+
+        val progressText = TextView(this).apply {
+            text = "100%"
+            textSize = 14f
             setPadding(16, 0, 0, 0)
         }
 
         linearLayout.addView(iconView)
         linearLayout.addView(nameView)
+        linearLayout.addView(progressText)
         card.addView(linearLayout)
         completedContainer.addView(card)
     }

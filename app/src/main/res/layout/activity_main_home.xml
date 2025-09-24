@@ -35,48 +35,6 @@
                 android:textSize="25sp"
                 android:textStyle="bold"/>
 
-            <!-- Top Toggle Group (Today / Weekly / Overall) -->
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/topToggleGroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:singleSelection="true"
-                android:layout_marginTop="12dp">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnToday"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Today"
-                    app:cornerRadius="16dp"
-                    app:backgroundTint="@color/AccentColor2"
-                    android:textColor="@android:color/white"/>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnWeekly"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Weekly"
-                    app:cornerRadius="16dp"
-                    app:backgroundTint="@android:color/white"
-                    android:textColor="@android:color/black"/>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnOverall"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Overall"
-                    app:cornerRadius="16dp"
-                    app:backgroundTint="@android:color/white"
-                    android:textColor="@android:color/black"/>
-            </com.google.android.material.button.MaterialButtonToggleGroup>
-
             <!-- Horizontal Filter Buttons (All / Morning / Afternoon / Evening) -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -154,6 +112,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="12dp"/>
+
+            <!-- Charts -->
 
         </LinearLayout>
     </ScrollView>
