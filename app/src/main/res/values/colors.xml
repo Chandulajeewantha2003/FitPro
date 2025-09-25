@@ -14,6 +14,7 @@
     <color name="bg_white">#F3F3F3</color>
     <color name="AccentColor1">#FF805E</color>
     <color name="AccentColor2">#8C6CBF</color>
+    <color name="AccentColor3">#00BCD4</color>
 
 
 </resources>
