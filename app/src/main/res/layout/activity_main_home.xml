@@ -9,20 +9,21 @@
     android:fitsSystemWindows="true"
     tools:context=".MainHome">
 
-    <!-- Scrollable content -->
-    <ScrollView
+    <!-- ✅ Scrollable content with proper padding -->
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
+        android:clipToPadding="false"
+        android:paddingBottom="160dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"
-            android:paddingBottom="120dp">
+            android:padding="16dp">
 
             <!-- Page Title -->
             <TextView
@@ -36,7 +37,7 @@
                 android:textSize="25sp"
                 android:textStyle="bold"/>
 
-            <!-- Horizontal Filter Buttons (All / Morning / Afternoon / Evening) -->
+            <!-- Filter Buttons -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -90,7 +91,7 @@
                 </LinearLayout>
             </HorizontalScrollView>
 
-            <!-- Dynamic Habits Container -->
+            <!-- Habits Container -->
             <LinearLayout
                 android:id="@+id/habitContainer"
                 android:layout_width="match_parent"
@@ -98,7 +99,7 @@
                 android:orientation="vertical"
                 android:layout_marginTop="16dp"/>
 
-            <!-- Completed Section -->
+            <!-- Completed Section Title -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -116,7 +117,7 @@
                 android:layout_marginTop="12dp"/>
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <!-- Floating Action Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton

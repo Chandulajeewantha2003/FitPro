@@ -35,7 +35,7 @@ class MainHome : AppCompatActivity() {
         val color: Int,
         val date: String,
         val timeOfDay: String,
-        val exactTime: String = "", // HH:mm format
+        val exactTime: String = "",
         var completed: Boolean = false,
         var progress: Int = 0
     )
@@ -96,13 +96,40 @@ class MainHome : AppCompatActivity() {
             startActivity(Intent(this, MainActivityCreateHabbits::class.java))
         }
 
-        // Sample Data (optional)
+        // Sample Habits
         if (habitList.isEmpty()) {
             habitList.addAll(
                 listOf(
-                    Habit("Morning Run", "\uD83C\uDFC3", Color.parseColor("#FFA726"), "2025-10-01", "Morning", "06:30", false, 20),
-                    Habit("Read Book", "\uD83D\uDCD6", Color.parseColor("#29B6F6"), "2025-10-01", "Afternoon", "13:00"),
-                    Habit("Evening Yoga", "\uD83E\uDD38", Color.parseColor("#AB47BC"), "2025-10-01", "Evening", "19:00", false, 50)
+                    Habit(
+                        name = "Drink 2L of Water",
+                        icon = "\uD83D\uDCA7", // 💧
+                        color = Color.parseColor("#4FC3F7"), // Light Blue
+                        date = "2025-10-01",
+                        timeOfDay = "Morning",
+                        exactTime = "08:00",
+                        completed = false,
+                        progress = 30
+                    ),
+                    Habit(
+                        name = "30-Minute Walk",
+                        icon = "\uD83C\uDFC3", // 🏃
+                        color = Color.parseColor("#81C784"), // Green
+                        date = "2025-10-01",
+                        timeOfDay = "Afternoon",
+                        exactTime = "14:00",
+                        completed = false,
+                        progress = 50
+                    ),
+                    Habit(
+                        name = "Journal for 10 Minutes",
+                        icon = "\uD83D\uDCDD", // 📝
+                        color = Color.parseColor("#FFAB91"), // Orange
+                        date = "2025-10-01",
+                        timeOfDay = "Evening",
+                        exactTime = "21:00",
+                        completed = false,
+                        progress = 10
+                    )
                 )
             )
         }
@@ -118,7 +145,6 @@ class MainHome : AppCompatActivity() {
                 filterHabits(btn.text.toString())
             }
         }
-        // Initially highlight "All"
         highlightButton(buttonAll)
     }
 
@@ -126,11 +152,11 @@ class MainHome : AppCompatActivity() {
         val buttons = listOf(buttonAll, buttonMorning, buttonAfternoon, buttonEvening)
         buttons.forEach { btn ->
             if (btn == selectedButton) {
-                btn.setBackgroundColor(Color.parseColor("#6A1B9A")) // Purple
+                btn.setBackgroundColor(Color.parseColor("#6A1B9A"))
                 btn.setTextColor(Color.WHITE)
             } else {
-                btn.setBackgroundColor(Color.parseColor("#FFFFFF")) // White
-                btn.setTextColor(Color.parseColor("#6200EE")) // primaryColor
+                btn.setBackgroundColor(Color.parseColor("#FFFFFF"))
+                btn.setTextColor(Color.parseColor("#6200EE"))
             }
         }
     }
@@ -139,7 +165,7 @@ class MainHome : AppCompatActivity() {
         habitContainer.removeAllViews()
         completedContainer.removeAllViews()
 
-        val filteredHabits = if (timeOfDay == "All") {
+        val filteredHabits = if (timeOfDay.equals("All", ignoreCase = true)) {
             habitList
         } else {
             habitList.filter { it.timeOfDay.equals(timeOfDay, ignoreCase = true) }
@@ -174,7 +200,6 @@ class MainHome : AppCompatActivity() {
             setPadding(24, 24, 24, 24)
         }
 
-        // Habit name and info
         val habitInfo = TextView(this).apply {
             text = "${habit.icon} ${habit.name}\n${habit.date} | ${habit.timeOfDay} (${habit.exactTime})"
             textSize = 18f
@@ -182,7 +207,6 @@ class MainHome : AppCompatActivity() {
         }
         linearLayout.addView(habitInfo)
 
-        // Progress bar
         val progressBar = ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal).apply {
             max = 100
             progress = habit.progress
@@ -193,7 +217,6 @@ class MainHome : AppCompatActivity() {
         }
         linearLayout.addView(progressBar)
 
-        // Text showing progress percentage
         val progressText = TextView(this).apply {
             text = "Progress: ${habit.progress}%"
             textSize = 14f
@@ -202,7 +225,6 @@ class MainHome : AppCompatActivity() {
         }
         linearLayout.addView(progressText)
 
-        // Button to mark completed
         val btnCompleted = MaterialButton(this).apply {
             text = "Completed"
             setOnClickListener {
@@ -217,7 +239,6 @@ class MainHome : AppCompatActivity() {
         }
         linearLayout.addView(btnCompleted)
 
-        // Button to increase progress (for demo)
         val btnIncreaseProgress = MaterialButton(this).apply {
             text = "Increase Progress"
             setOnClickListener {
