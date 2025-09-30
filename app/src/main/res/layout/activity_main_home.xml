@@ -14,7 +14,8 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,41 +49,42 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/buttonAll"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/AccentColor2"
-                        android:text="All"
                         android:layout_marginEnd="12dp"
-                        app:cornerRadius="5dp"/>
+                        android:text="All"
+                        app:backgroundTint="@color/AccentColor2"
+                        app:cornerRadius="5dp"
+                        android:textColor="@android:color/white"/>
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/buttonMorning"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="12dp"
-                        android:backgroundTint="@color/bg_white"
                         android:text="Morning"
+                        app:backgroundTint="@color/bg_white"
                         android:textColor="@color/primaryColor"
                         app:cornerRadius="5dp"/>
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/buttonAfternoon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="12dp"
-                        android:backgroundTint="@color/bg_white"
                         android:text="Afternoon"
+                        app:backgroundTint="@color/bg_white"
                         android:textColor="@color/primaryColor"
                         app:cornerRadius="5dp"/>
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/buttonEvening"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/bg_white"
                         android:text="Evening"
+                        app:backgroundTint="@color/bg_white"
                         android:textColor="@color/primaryColor"
                         app:cornerRadius="5dp"/>
                 </LinearLayout>
@@ -113,8 +115,6 @@
                 android:orientation="vertical"
                 android:layout_marginTop="12dp"/>
 
-            <!-- Charts -->
-
         </LinearLayout>
     </ScrollView>
 
@@ -139,4 +139,5 @@
         android:background="?android:attr/windowBackground"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

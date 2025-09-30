@@ -53,7 +53,7 @@
             android:name=".MainActivityMealPlan"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".MainHome"
             android:exported="false" />
         <activity
             android:name=".MainActivity7"
@@ -62,7 +62,7 @@
             android:name=".MainActivity6"
             android:exported="false" /> <!-- Splash / Logo Screen -->
         <activity
-            android:name=".MainHome"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -8,12 +8,6 @@
     android:background="#F1FFE7"
     tools:context=".MainActivity4">
 
-    <!-- Title -->
-
-    <!-- Number Picker -->
-
-    <!-- Next Button -->
-
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
