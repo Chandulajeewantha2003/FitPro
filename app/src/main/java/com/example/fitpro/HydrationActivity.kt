@@ -11,6 +11,8 @@ import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.formatter.ValueFormatter
+import com.google.android.material.appbar.MaterialToolbar
 
 class HydrationActivity : AppCompatActivity() {
 
@@ -34,11 +36,15 @@ class HydrationActivity : AppCompatActivity() {
         HydrationItem("6:15 PM", 250)
     )
 
-    private val dailyProgress = mutableListOf<Float>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hydration)
+
+        // Handle back button in toolbar
+        val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
+        toolbar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
 
         // Initialize views
         tvNextHydration = findViewById(R.id.tvNextHydration)
@@ -50,63 +56,103 @@ class HydrationActivity : AppCompatActivity() {
         etAmount = findViewById(R.id.etAmount)
         btnAddHydration = findViewById(R.id.btnAddHydration)
 
-        // RecyclerView adapter
-        adapter = HydrationAdapter(hydrationList) { item ->
-            if (!item.completed) {
-                item.completed = true
-                dailyProgress.add(item.amount.toFloat())
-                updateChart()
-                tvNextHydration.text = "Completed ✅"
-            }
+        // Set up RecyclerView
+        adapter = HydrationAdapter(hydrationList) { position, isChecked ->
+            hydrationList[position].completed = isChecked
+            updateChart()
+            updateNextHydrationText()
         }
 
         rvHydrationSchedule.layoutManager = LinearLayoutManager(this)
         rvHydrationSchedule.adapter = adapter
 
-        // Show first next drink
-        tvNextHydration.text = "Ready to hydrate in: 47 min"
-        tvNextAmount.text = "${hydrationList[0].amount} ml"
-
-        // Draw initial empty chart
         updateChart()
+        updateNextHydrationText()
 
-        // Add custom hydration entry
+        // Handle Add Button Click
         btnAddHydration.setOnClickListener {
-            val time = etTime.text.toString()
-            val amountText = etAmount.text.toString()
+            val time = etTime.text.toString().trim()
+            val amountText = etAmount.text.toString().trim()
 
             if (time.isNotEmpty() && amountText.isNotEmpty()) {
-                val amount = amountText.toInt()
-                val newItem = HydrationItem(time, amount)
-                hydrationList.add(newItem)
-                adapter.notifyItemInserted(hydrationList.size - 1)
-
-                // Clear inputs
-                etTime.text.clear()
-                etAmount.text.clear()
+                val amount = amountText.toIntOrNull()
+                if (amount != null && amount > 0) {
+                    hydrationList.add(HydrationItem(time, amount))
+                    adapter.notifyItemInserted(hydrationList.size - 1)
+                    updateChart()
+                    updateNextHydrationText()
+                    etTime.text.clear()
+                    etAmount.text.clear()
+                }
             }
         }
     }
 
     private fun updateChart() {
         val entries = mutableListOf<BarEntry>()
-        dailyProgress.forEachIndexed { index, amount ->
-            entries.add(BarEntry(index.toFloat(), amount))
+        hydrationList.forEachIndexed { index, item ->
+            val yValue = if (item.completed) item.amount.toFloat() else 0f
+            entries.add(BarEntry(index.toFloat(), yValue))
         }
 
-        val dataSet = BarDataSet(entries, "Water Intake (ml)")
-        dataSet.color = resources.getColor(R.color.AccentColor3, null)
+        val dataSet = BarDataSet(entries, "Water Intake (ml)").apply {
+            colors = hydrationList.map {
+                if (it.completed) resources.getColor(R.color.purple_500, null)
+                else resources.getColor(R.color.gray, null)
+            }
+            valueTextSize = 12f
+            valueTextColor = resources.getColor(android.R.color.black, null)
+            setDrawValues(true)
+        }
 
-        val barData = BarData(dataSet)
-        barData.barWidth = 0.5f
+        val barData = BarData(dataSet).apply {
+            barWidth = 0.6f
+        }
 
-        waterChart.data = barData
-        waterChart.description.isEnabled = false
-        waterChart.animateY(1000)
-        waterChart.invalidate()
+        waterChart.apply {
+            data = barData
+            description.isEnabled = false
 
-        // Update total water consumed
-        val total = dailyProgress.sum()
-        tvTotalWater.text = "Total: ${total.toInt()} ml"
+            xAxis.apply {
+                granularity = 1f
+                setDrawGridLines(false)
+                position = com.github.mikephil.charting.components.XAxis.XAxisPosition.BOTTOM
+                textColor = resources.getColor(android.R.color.black, null)
+                textSize = 12f
+                valueFormatter = object : ValueFormatter() {
+                    override fun getFormattedValue(value: Float): String {
+                        val idx = value.toInt()
+                        return if (idx in hydrationList.indices) hydrationList[idx].time else ""
+                    }
+                }
+            }
+
+            axisLeft.apply {
+                axisMinimum = 0f
+                textColor = resources.getColor(android.R.color.black, null)
+                setDrawGridLines(true)
+            }
+
+            axisRight.isEnabled = false
+
+            legend.isEnabled = true
+            animateY(1200)
+            setFitBars(true)
+            invalidate()
+        }
+
+        val total = hydrationList.filter { it.completed }.sumOf { it.amount }
+        tvTotalWater.text = "Total: $total ml"
+    }
+
+    private fun updateNextHydrationText() {
+        val nextItem = hydrationList.firstOrNull { !it.completed }
+        if (nextItem != null) {
+            tvNextHydration.text = "Next hydration:"
+            tvNextAmount.text = "${nextItem.amount} ml at ${nextItem.time}"
+        } else {
+            tvNextHydration.text = "All done! 🎉"
+            tvNextAmount.text = ""
+        }
     }
 }

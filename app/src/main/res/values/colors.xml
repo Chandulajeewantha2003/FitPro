@@ -16,5 +16,15 @@
     <color name="AccentColor2">#8C6CBF</color>
     <color name="AccentColor3">#00BCD4</color>
 
+    <color name="gray">#B0B0B0</color> <!-- Light gray for incomplete bars -->
+    <color name="purple_500">#6200EE</color> <!-- Or use your app's accent color -->
+
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="background">#F5F5F5</color>
+    <color name="grayLight">#E0E0E0</color>
+
+
 
 </resources>

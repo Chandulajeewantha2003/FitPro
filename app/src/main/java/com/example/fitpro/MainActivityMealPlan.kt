@@ -23,9 +23,15 @@ class MainActivityMealPlan : AppCompatActivity() {
         }
 
         // ✅ Handle Meal Buttons
+        val btnAll = findViewById<Button>(R.id.btnAll)
         val btnBreakfast = findViewById<Button>(R.id.btnBreakfast)
         val btnLunch = findViewById<Button>(R.id.btnLunch)
         val btnDinner = findViewById<Button>(R.id.btnDinner)
+
+        btnAll.setOnClickListener {
+            val intent = Intent(this, HydrationActivity::class.java)
+            startActivity(intent)
+        }
 
         btnBreakfast.setOnClickListener {
             val intent = Intent(this, MainActivityBreakfast::class.java)

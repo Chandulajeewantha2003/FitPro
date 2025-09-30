@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/primaryColor"
-            android:text="ALL" />
+            android:text="Water" />
 
         <Button
             android:id="@+id/btnBreakfast"

@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitPro">
         <activity
-            android:name=".MainHome"
+            android:name=".HydrationActivity"
             android:exported="false" />
         <activity
             android:name=".HabitsAdapter"
@@ -62,7 +62,7 @@
             android:name=".MainActivity6"
             android:exported="false" /> <!-- Splash / Logo Screen -->
         <activity
-            android:name=".HydrationActivity"
+            android:name=".MainHome"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
