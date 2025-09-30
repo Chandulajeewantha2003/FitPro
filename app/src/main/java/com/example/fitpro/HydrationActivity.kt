@@ -35,6 +35,10 @@ class HydrationActivity : AppCompatActivity() {
         HydrationItem("6:15 PM", 250)
     )
 
+    private val prefs by lazy {
+        getSharedPreferences("hydration_prefs", MODE_PRIVATE)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hydration)
@@ -53,8 +57,11 @@ class HydrationActivity : AppCompatActivity() {
         etAmount = findViewById(R.id.etAmount)
         btnAddHydration = findViewById(R.id.btnAddHydration)
 
+        loadHydrationState()
+
         adapter = HydrationAdapter(hydrationList) { position, isChecked ->
             hydrationList[position].completed = isChecked
+            saveHydrationState()
             updateChart()
             updateNextHydrationText()
         }
@@ -83,12 +90,26 @@ class HydrationActivity : AppCompatActivity() {
                 if (amount != null && amount > 0) {
                     hydrationList.add(HydrationItem(time, amount))
                     adapter.notifyItemInserted(hydrationList.size - 1)
+                    saveHydrationState()
                     updateChart()
                     updateNextHydrationText()
                     etTime.text.clear()
                     etAmount.text.clear()
                 }
             }
+        }
+    }
+
+    private fun saveHydrationState() {
+        // Save times of completed items in SharedPreferences as Set<String>
+        val completedTimes = hydrationList.filter { it.completed }.map { it.time }.toSet()
+        prefs.edit().putStringSet("completed_times", completedTimes).apply()
+    }
+
+    private fun loadHydrationState() {
+        val completedTimes = prefs.getStringSet("completed_times", emptySet()) ?: emptySet()
+        hydrationList.forEach {
+            it.completed = completedTimes.contains(it.time)
         }
     }
 

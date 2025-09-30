@@ -28,14 +28,13 @@ class HydrationAdapter(
         val item = items[position]
         holder.tvTime.text = item.time
         holder.tvAmount.text = "${item.amount} ml"
+
+        // Remove old listener before changing checked state to prevent recursion
+        holder.cbCompleted.setOnCheckedChangeListener(null)
         holder.cbCompleted.isChecked = item.completed
 
         // Dim item if completed
         holder.itemView.alpha = if (item.completed) 0.5f else 1.0f
-
-        // Prevent callback loop
-        holder.cbCompleted.setOnCheckedChangeListener(null)
-        holder.cbCompleted.isChecked = item.completed
 
         holder.cbCompleted.setOnCheckedChangeListener { _, isChecked ->
             onItemCheckedChange(position, isChecked)
