@@ -4,9 +4,11 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -45,17 +47,15 @@ class MainHome : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main_home)
 
-        // Edge-to-edge padding
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(bars.left, bars.top, bars.right, bars.bottom)
             insets
         }
 
         habitContainer = findViewById(R.id.habitContainer)
         completedContainer = findViewById(R.id.completedContainer)
 
-        // Buttons
         buttonAll = findViewById(R.id.buttonAll)
         buttonMorning = findViewById(R.id.buttonMorning)
         buttonAfternoon = findViewById(R.id.buttonAfternoon)
@@ -63,10 +63,9 @@ class MainHome : AppCompatActivity() {
 
         setupTimeOfDayButtons()
 
-        // Bottom navigation
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigationView.selectedItemId = R.id.nav_home
-        bottomNavigationView.setOnItemSelectedListener { item ->
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNav.selectedItemId = R.id.nav_home
+        bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> true
                 R.id.nav_meal -> {
@@ -96,40 +95,23 @@ class MainHome : AppCompatActivity() {
             startActivity(Intent(this, MainActivityCreateHabbits::class.java))
         }
 
-        // Sample Habits
+        // Notification bell icon click
+        val bellIcon = findViewById<ImageView>(R.id.bellIcon)
+        bellIcon.setOnClickListener {
+            val intent = Intent(this, HydrationActivity::class.java)
+            intent.putExtra("show_next", true)
+            startActivity(intent)
+        }
+
         if (habitList.isEmpty()) {
             habitList.addAll(
                 listOf(
-                    Habit(
-                        name = "Drink 2L of Water",
-                        icon = "\uD83D\uDCA7", // 💧
-                        color = Color.parseColor("#4FC3F7"), // Light Blue
-                        date = "2025-10-01",
-                        timeOfDay = "Morning",
-                        exactTime = "08:00",
-                        completed = false,
-                        progress = 30
-                    ),
-                    Habit(
-                        name = "30-Minute Walk",
-                        icon = "\uD83C\uDFC3", // 🏃
-                        color = Color.parseColor("#81C784"), // Green
-                        date = "2025-10-01",
-                        timeOfDay = "Afternoon",
-                        exactTime = "14:00",
-                        completed = false,
-                        progress = 50
-                    ),
-                    Habit(
-                        name = "Journal for 10 Minutes",
-                        icon = "\uD83D\uDCDD", // 📝
-                        color = Color.parseColor("#FFAB91"), // Orange
-                        date = "2025-10-01",
-                        timeOfDay = "Evening",
-                        exactTime = "21:00",
-                        completed = false,
-                        progress = 10
-                    )
+                    Habit("Drink 2L of Water", "\uD83D\uDCA7", Color.parseColor("#4FC3F7"),
+                        "2025-10-01", "Morning", "08:00", false, 30),
+                    Habit("30-Minute Walk", "\uD83C\uDFC3", Color.parseColor("#81C784"),
+                        "2025-10-01", "Afternoon", "14:00", false, 50),
+                    Habit("Journal for 10 Minutes", "\uD83D\uDCDD", Color.parseColor("#FFAB91"),
+                        "2025-10-01", "Evening", "21:00", false, 10)
                 )
             )
         }
@@ -148,14 +130,14 @@ class MainHome : AppCompatActivity() {
         highlightButton(buttonAll)
     }
 
-    private fun highlightButton(selectedButton: MaterialButton) {
+    private fun highlightButton(selected: MaterialButton) {
         val buttons = listOf(buttonAll, buttonMorning, buttonAfternoon, buttonEvening)
         buttons.forEach { btn ->
-            if (btn == selectedButton) {
+            if (btn == selected) {
                 btn.setBackgroundColor(Color.parseColor("#6A1B9A"))
                 btn.setTextColor(Color.WHITE)
             } else {
-                btn.setBackgroundColor(Color.parseColor("#FFFFFF"))
+                btn.setBackgroundColor(Color.WHITE)
                 btn.setTextColor(Color.parseColor("#6200EE"))
             }
         }
@@ -165,13 +147,13 @@ class MainHome : AppCompatActivity() {
         habitContainer.removeAllViews()
         completedContainer.removeAllViews()
 
-        val filteredHabits = if (timeOfDay.equals("All", ignoreCase = true)) {
+        val filtered = if (timeOfDay.equals("All", ignoreCase = true)) {
             habitList
         } else {
             habitList.filter { it.timeOfDay.equals(timeOfDay, ignoreCase = true) }
         }
 
-        filteredHabits.forEach { habit ->
+        filtered.forEach { habit ->
             if (!habit.completed) {
                 addHabitCard(habit)
             } else {
@@ -195,17 +177,17 @@ class MainHome : AppCompatActivity() {
             ).apply { setMargins(0, 16, 0, 0) }
         }
 
-        val linearLayout = LinearLayout(this).apply {
+        val ll = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             setPadding(24, 24, 24, 24)
         }
 
-        val habitInfo = TextView(this).apply {
+        val info = TextView(this).apply {
             text = "${habit.icon} ${habit.name}\n${habit.date} | ${habit.timeOfDay} (${habit.exactTime})"
             textSize = 18f
             setTextColor(Color.BLACK)
         }
-        linearLayout.addView(habitInfo)
+        ll.addView(info)
 
         val progressBar = ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal).apply {
             max = 100
@@ -215,7 +197,7 @@ class MainHome : AppCompatActivity() {
                 24
             ).apply { topMargin = 16 }
         }
-        linearLayout.addView(progressBar)
+        ll.addView(progressBar)
 
         val progressText = TextView(this).apply {
             text = "Progress: ${habit.progress}%"
@@ -223,9 +205,9 @@ class MainHome : AppCompatActivity() {
             setTextColor(Color.DKGRAY)
             gravity = Gravity.END
         }
-        linearLayout.addView(progressText)
+        ll.addView(progressText)
 
-        val btnCompleted = MaterialButton(this).apply {
+        val btnComplete = MaterialButton(this).apply {
             text = "Completed"
             setOnClickListener {
                 habit.completed = true
@@ -237,9 +219,9 @@ class MainHome : AppCompatActivity() {
                 LinearLayout.LayoutParams.WRAP_CONTENT
             ).apply { topMargin = 16 }
         }
-        linearLayout.addView(btnCompleted)
+        ll.addView(btnComplete)
 
-        val btnIncreaseProgress = MaterialButton(this).apply {
+        val btnInc = MaterialButton(this).apply {
             text = "Increase Progress"
             setOnClickListener {
                 if (habit.progress < 100) {
@@ -253,9 +235,9 @@ class MainHome : AppCompatActivity() {
                 LinearLayout.LayoutParams.WRAP_CONTENT
             ).apply { topMargin = 8 }
         }
-        linearLayout.addView(btnIncreaseProgress)
+        ll.addView(btnInc)
 
-        card.addView(linearLayout)
+        card.addView(ll)
         habitContainer.addView(card)
     }
 
@@ -270,27 +252,27 @@ class MainHome : AppCompatActivity() {
             ).apply { setMargins(0, 16, 0, 0) }
         }
 
-        val linearLayout = LinearLayout(this).apply {
+        val ll = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             setPadding(24, 24, 24, 24)
         }
 
-        val habitInfo = TextView(this).apply {
+        val info = TextView(this).apply {
             text = "${habit.icon} ${habit.name}\n${habit.date} | ${habit.timeOfDay} (${habit.exactTime})"
             textSize = 18f
             setTextColor(Color.DKGRAY)
         }
-        linearLayout.addView(habitInfo)
+        ll.addView(info)
 
-        val completedText = TextView(this).apply {
+        val doneText = TextView(this).apply {
             text = "Completed!"
             textSize = 16f
             setTextColor(Color.GREEN)
             gravity = Gravity.END
         }
-        linearLayout.addView(completedText)
+        ll.addView(doneText)
 
-        card.addView(linearLayout)
+        card.addView(ll)
         completedContainer.addView(card)
     }
 }

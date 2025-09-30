@@ -12,7 +12,6 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
-import com.google.android.material.appbar.MaterialToolbar
 
 class HydrationActivity : AppCompatActivity() {
 
@@ -40,13 +39,11 @@ class HydrationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hydration)
 
-        // Handle back button in toolbar
-        val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
+        val toolbar = findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.toolbar)
         toolbar.setNavigationOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        // Initialize views
         tvNextHydration = findViewById(R.id.tvNextHydration)
         tvNextAmount = findViewById(R.id.tvNextAmount)
         rvHydrationSchedule = findViewById(R.id.rvHydrationSchedule)
@@ -56,7 +53,6 @@ class HydrationActivity : AppCompatActivity() {
         etAmount = findViewById(R.id.etAmount)
         btnAddHydration = findViewById(R.id.btnAddHydration)
 
-        // Set up RecyclerView
         adapter = HydrationAdapter(hydrationList) { position, isChecked ->
             hydrationList[position].completed = isChecked
             updateChart()
@@ -69,11 +65,19 @@ class HydrationActivity : AppCompatActivity() {
         updateChart()
         updateNextHydrationText()
 
-        // Handle Add Button Click
+        // Scroll to next hydration if requested
+        if (intent.getBooleanExtra("show_next", false)) {
+            val nextIndex = hydrationList.indexOfFirst { !it.completed }
+            if (nextIndex != -1) {
+                rvHydrationSchedule.post {
+                    rvHydrationSchedule.scrollToPosition(nextIndex)
+                }
+            }
+        }
+
         btnAddHydration.setOnClickListener {
             val time = etTime.text.toString().trim()
             val amountText = etAmount.text.toString().trim()
-
             if (time.isNotEmpty() && amountText.isNotEmpty()) {
                 val amount = amountText.toIntOrNull()
                 if (amount != null && amount > 0) {
@@ -97,8 +101,10 @@ class HydrationActivity : AppCompatActivity() {
 
         val dataSet = BarDataSet(entries, "Water Intake (ml)").apply {
             colors = hydrationList.map {
-                if (it.completed) resources.getColor(R.color.purple_500, null)
-                else resources.getColor(R.color.gray, null)
+                if (it.completed)
+                    resources.getColor(R.color.purple_500, null)
+                else
+                    resources.getColor(R.color.gray, null)
             }
             valueTextSize = 12f
             valueTextColor = resources.getColor(android.R.color.black, null)
@@ -134,7 +140,6 @@ class HydrationActivity : AppCompatActivity() {
             }
 
             axisRight.isEnabled = false
-
             legend.isEnabled = true
             animateY(1200)
             setFitBars(true)
