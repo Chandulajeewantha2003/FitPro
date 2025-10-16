@@ -106,7 +106,7 @@ class MainHome : AppCompatActivity() {
         if (habitList.isEmpty()) {
             habitList.addAll(
                 listOf(
-                    Habit("Drink 2L of Water", "\uD83D\uDCA7", Color.parseColor("#4FC3F7"),
+                    Habit("Drink 2L of Water", "\uD83D\uDCA7", getColor(R.color.colorTertiary),
                         "2025-10-01", "Morning", "08:00", false, 30),
                     Habit("30-Minute Walk", "\uD83C\uDFC3", Color.parseColor("#81C784"),
                         "2025-10-01", "Afternoon", "14:00", false, 50),
@@ -134,11 +134,11 @@ class MainHome : AppCompatActivity() {
         val buttons = listOf(buttonAll, buttonMorning, buttonAfternoon, buttonEvening)
         buttons.forEach { btn ->
             if (btn == selected) {
-                btn.setBackgroundColor(Color.parseColor("#6A1B9A"))
-                btn.setTextColor(Color.WHITE)
+                btn.setBackgroundColor(getColor(R.color.colorPrimary))
+                btn.setTextColor(getColor(R.color.colorOnPrimary))
             } else {
-                btn.setBackgroundColor(Color.WHITE)
-                btn.setTextColor(Color.parseColor("#6200EE"))
+                btn.setBackgroundColor(getColor(R.color.colorSurface))
+                btn.setTextColor(getColor(R.color.colorPrimary))
             }
         }
     }

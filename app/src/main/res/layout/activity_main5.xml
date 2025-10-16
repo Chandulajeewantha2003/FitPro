@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1FFE7"
+    android:background="@color/background"
     tools:context=".MainActivity5">
 
     <!-- Step text -->
@@ -16,7 +16,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="Step 3 of 4"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorOnSurface"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,8 +32,8 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/bebas_neue"
         android:text="HOW MUCH DO YOU WEIGHT?"
-        android:textColor="@android:color/black"
-        android:textSize="25dp"
+        android:textColor="@color/colorOnSurface"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.148"
@@ -54,7 +54,7 @@
             android:id="@+id/radioLbs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@android:color/darker_gray"
+            android:buttonTint="@color/colorPrimary"
             android:checked="false"
             android:text="LBS" />
 
@@ -62,7 +62,7 @@
             android:id="@+id/radioKg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@android:color/darker_gray"
+            android:buttonTint="@color/colorPrimary"
             android:checked="true"
             android:text="KG" />
     </RadioGroup>
@@ -71,30 +71,34 @@
 
     <!-- Next Button -->
 
-    <EditText
-        android:id="@+id/weightInput"
-        android:layout_width="110dp"
-        android:layout_height="106dp"
-        android:layout_marginHorizontal="40dp"
-        android:background="@android:color/transparent"
-        android:gravity="center"
-        android:hint="Enter your weight"
-        android:inputType="number"
-        android:text="87"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/weightInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/unitToggle">
 
-    <Button
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/weightInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Enter your weight"
+            android:inputType="number"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/nextBtnWeight"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:backgroundTint="#A7CF34"
+        app:backgroundTint="@color/colorPrimary"
         android:text="NEXT STEPS"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorOnPrimary"
         android:textStyle="bold"
         app:cornerRadius="7dp"
         app:layout_constraintBottom_toBottomOf="parent"

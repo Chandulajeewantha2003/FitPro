@@ -17,9 +17,6 @@
             android:name=".HydrationActivity"
             android:exported="false" />
         <activity
-            android:name=".HabitsAdapter"
-            android:exported="false" />
-        <activity
             android:name=".MainActivityCreateHabbits"
             android:exported="false" />
         <activity

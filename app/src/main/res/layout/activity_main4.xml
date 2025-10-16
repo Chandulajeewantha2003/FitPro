@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1FFE7"
+    android:background="@color/background"
     tools:context=".MainActivity4">
 
     <TextView
@@ -13,6 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Step 2 of 4"
+        android:textColor="@color/colorOnSurface"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.101"
@@ -27,8 +29,8 @@
         android:layout_marginTop="28dp"
         android:fontFamily="@font/bebas_neue"
         android:text="HOW OLD ARE YOU?"
-        android:textColor="@android:color/black"
-        android:textSize="25dp"
+        android:textColor="@color/colorOnSurface"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.131"
@@ -37,21 +39,21 @@
 
     <NumberPicker
         android:id="@+id/agePicker"
-        android:layout_width="87dp"
-        android:layout_height="262dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/nextBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:backgroundTint="#A7CF34"
+        app:backgroundTint="@color/colorPrimary"
         android:text="NEXT STEPS"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorOnPrimary"
         android:textStyle="bold"
         app:cornerRadius="7dp"
         app:layout_constraintBottom_toBottomOf="parent"

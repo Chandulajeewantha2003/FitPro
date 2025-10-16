@@ -12,6 +12,7 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
+import com.github.mikephil.charting.components.LimitLine
 
 class HydrationActivity : AppCompatActivity() {
 
@@ -38,6 +39,8 @@ class HydrationActivity : AppCompatActivity() {
     private val prefs by lazy {
         getSharedPreferences("hydration_prefs", MODE_PRIVATE)
     }
+
+    private val dailyGoalMl: Int = 2000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -116,24 +119,24 @@ class HydrationActivity : AppCompatActivity() {
     private fun updateChart() {
         val entries = mutableListOf<BarEntry>()
         hydrationList.forEachIndexed { index, item ->
-            val yValue = if (item.completed) item.amount.toFloat() else 0f
-            entries.add(BarEntry(index.toFloat(), yValue))
+            val consumed = if (item.completed) item.amount.toFloat() else 0f
+            val remaining = if (item.completed) 0f else item.amount.toFloat()
+            entries.add(BarEntry(index.toFloat(), floatArrayOf(consumed, remaining)))
         }
 
-        val dataSet = BarDataSet(entries, "Water Intake (ml)").apply {
-            colors = hydrationList.map {
-                if (it.completed)
-                    resources.getColor(R.color.purple_500, null)
-                else
-                    resources.getColor(R.color.gray, null)
-            }
-            valueTextSize = 12f
-            valueTextColor = resources.getColor(android.R.color.black, null)
-            setDrawValues(true)
+        val stackedSet = BarDataSet(entries, "Hydration per slot").apply {
+            setDrawIcons(false)
+            setDrawValues(false)
+            isHighlightEnabled = false
+            colors = listOf(
+                resources.getColor(R.color.purple_500, null), // Consumed
+                resources.getColor(R.color.gray, null)        // Remaining
+            )
+            stackLabels = arrayOf("Consumed", "Remaining")
         }
 
-        val barData = BarData(dataSet).apply {
-            barWidth = 0.6f
+        val barData = BarData(stackedSet).apply {
+            barWidth = 0.7f
         }
 
         waterChart.apply {
@@ -146,6 +149,7 @@ class HydrationActivity : AppCompatActivity() {
                 position = com.github.mikephil.charting.components.XAxis.XAxisPosition.BOTTOM
                 textColor = resources.getColor(android.R.color.black, null)
                 textSize = 12f
+                labelRotationAngle = -45f
                 valueFormatter = object : ValueFormatter() {
                     override fun getFormattedValue(value: Float): String {
                         val idx = value.toInt()
@@ -158,17 +162,31 @@ class HydrationActivity : AppCompatActivity() {
                 axisMinimum = 0f
                 textColor = resources.getColor(android.R.color.black, null)
                 setDrawGridLines(true)
+                granularity = 100f
+                removeAllLimitLines()
+                val goalLine = LimitLine(dailyGoalMl.toFloat(), "Daily Goal").apply {
+                    lineColor = resources.getColor(R.color.purple_500, null)
+                    lineWidth = 1.5f
+                    enableDashedLine(12f, 8f, 0f)
+                    textColor = resources.getColor(android.R.color.black, null)
+                    textSize = 12f
+                }
+                addLimitLine(goalLine)
             }
 
             axisRight.isEnabled = false
             legend.isEnabled = true
+            legend.textSize = 12f
+            legend.xEntrySpace = 8f
             animateY(1200)
             setFitBars(true)
             invalidate()
         }
 
-        val total = hydrationList.filter { it.completed }.sumOf { it.amount }
-        tvTotalWater.text = "Total: $total ml"
+        val totalConsumed = hydrationList.filter { it.completed }.sumOf { it.amount }
+        val goal = maxOf(dailyGoalMl, hydrationList.sumOf { it.amount })
+        val percent = if (goal > 0) (totalConsumed * 100f / goal) else 0f
+        tvTotalWater.text = "Total: $totalConsumed/$goal ml (${"%.0f".format(percent)}%)"
     }
 
     private fun updateNextHydrationText() {

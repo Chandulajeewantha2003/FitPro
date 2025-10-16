@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -32,13 +33,17 @@ class MainActivity6 : AppCompatActivity() {
         val nextBtn: Button = findViewById(R.id.nextBtnHeight)
 
         nextBtn.setOnClickListener {
-            val height = heightInput.text.toString().ifEmpty { "0" }
-            val unit = if (radioCm.isChecked) "cm" else "ft"
-
-            prefs.edit().putString("height", "$height $unit").apply()
-
-            val intent = Intent(this, MainActivity7::class.java)
-            startActivity(intent)
+            val heightText = heightInput.text.toString().trim()
+            val heightValue = heightText.toIntOrNull()
+            val isCm = radioCm.isChecked
+            val valid = if (isCm) heightValue != null && heightValue in 80..250 else heightValue != null && heightValue in 3..8
+            if (!valid) {
+                Toast.makeText(this, if (isCm) "Enter valid height (80-250 cm)" else "Enter valid height (3-8 ft)", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            val unit = if (isCm) "cm" else "ft"
+            prefs.edit().putString("height", "$heightValue $unit").apply()
+            startActivity(Intent(this, MainActivity7::class.java))
         }
     }
 }

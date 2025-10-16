@@ -2,8 +2,9 @@ package com.example.fitpro
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -11,11 +12,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)  // your logo screen XML
 
-        // Delay 3 seconds then move to MainActivity2
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, MainActivity2::class.java)
-            startActivity(intent)
-            finish() // close splash so back button won't return here
-        }, 5000) // 5000ms = 5 seconds
+        // Delay 5 seconds then move to MainActivity2 using lifecycleScope to avoid leaks
+        lifecycleScope.launch {
+            delay(5000)
+            startActivity(Intent(this@MainActivity, MainActivity2::class.java))
+            finish()
+        }
     }
 }

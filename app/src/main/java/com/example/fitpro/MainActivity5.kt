@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -32,13 +33,15 @@ class MainActivity5 : AppCompatActivity() {
         val nextBtn: Button = findViewById(R.id.nextBtnWeight)
 
         nextBtn.setOnClickListener {
-            val weight = weightInput.text.toString().ifEmpty { "0" }
+            val weightText = weightInput.text.toString().trim()
+            val weightValue = weightText.toIntOrNull()
+            if (weightValue == null || weightValue !in 20..400) {
+                Toast.makeText(this, "Please enter a valid weight (20-400)", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val unit = if (radioKg.isChecked) "kg" else "lbs"
-
-            prefs.edit().putString("weight", "$weight $unit").apply()
-
-            val intent = Intent(this, MainActivity6::class.java)
-            startActivity(intent)
+            prefs.edit().putString("weight", "$weightValue $unit").apply()
+            startActivity(Intent(this, MainActivity6::class.java))
         }
     }
 }

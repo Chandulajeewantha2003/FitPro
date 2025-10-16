@@ -17,13 +17,30 @@
     <color name="AccentColor3">#00BCD4</color>
 
     <color name="gray">#B0B0B0</color> <!-- Light gray for incomplete bars -->
-    <color name="purple_500">#6200EE</color> <!-- Or use your app's accent color -->
+    <color name="purple_500">#6A1B9A</color> <!-- Primary brand: Deep Purple -->
 
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
-    <color name="background">#F5F5F5</color>
+    <color name="colorPrimary">#6A1B9A</color>
+    <color name="colorPrimaryDark">#4A136B</color>
+    <color name="colorAccent">#CEFB3E</color>
+    <color name="background">#F8FAFC</color>
     <color name="grayLight">#E0E0E0</color>
+
+    <!-- Material 3 semantic colors -->
+    <color name="colorOnPrimary">#FFFFFFFF</color>
+    <color name="colorSecondary">#4450F6</color>
+    <color name="colorOnSecondary">#FFFFFFFF</color>
+    <color name="colorTertiary">#00BCD4</color>
+    <color name="colorOnTertiary">#FFFFFFFF</color>
+    <color name="colorSurface">#FFFFFFFF</color>
+    <color name="colorOnSurface">#1A1B1E</color>
+    <color name="colorSurfaceVariant">#F1F3F5</color>
+    <color name="colorOutline">#D0D5DD</color>
+
+    <!-- Bottom Navigation Colors -->
+    <color name="bottomNavBackground">#FFFFFFFF</color>
+    <color name="bottomNavSelected">#6A1B9A</color>
+    <color name="bottomNavUnselected">#9AA0A6</color>
+    <color name="bottomNavRipple">#1F6A1B9A</color>
 
 
 

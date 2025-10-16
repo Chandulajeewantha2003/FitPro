@@ -30,4 +30,13 @@
     </style>
 
 
+    <!-- BottomNavigationView professional style -->
+    <style name="Widget.FitPro.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">@color/bottomNavBackground</item>
+        <item name="itemIconTint">@color/bottom_nav_item_color</item>
+        <item name="itemTextColor">@color/bottom_nav_item_color</item>
+        <item name="itemRippleColor">@color/bottomNavRipple</item>
+        <item name="labelVisibilityMode">labeled</item>
+    </style>
+
 </resources>

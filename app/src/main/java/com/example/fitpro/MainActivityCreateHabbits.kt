@@ -111,10 +111,10 @@ class MainActivityCreateHabbits : AppCompatActivity() {
         }
     }
 
-    // ------------------------------
-    // Emoji Selection
-    // ------------------------------
-    private fun setupEmojiSelection() {
+        // ------------------------------
+        // Emoji Selection
+        // ------------------------------
+        private fun setupEmojiSelection() {
         val emojiViews = emojiContainer.findViewsWithType(TextView::class.java)
         emojiViews.forEach { emojiView ->
             emojiView.setOnClickListener {
